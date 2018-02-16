@@ -1,0 +1,226 @@
+body {
+    background-color: #e0e0e0 !important;
+}
+
+.nav-hide {
+    visibility: hidden;
+}
+
+.navbar {
+    padding: 20px!important;
+    background-color: #263238;
+}
+
+.navbar-nav .nav-item a {
+    color: white !important;
+}
+
+.navbar-toggler-icon {
+    border: none !important;
+}
+
+.logoBig {
+    display: block;
+    position: fixed;
+    margin: 0 170px;
+    z-index: 2000;
+    padding: 30px 0 30px 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.logoBig img {
+    width: 800px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.logoSmall {
+    display: block;
+    position: fixed;
+    padding-top: 110px;
+    margin: -104px 480px 80px;
+    z-index: 2000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.logoSmall img {
+    width: 200px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.article-big {
+    background: url('../../assets/img/amos-bar.jpg'), no-repeat center center;
+    background-size: cover;
+    height: 600px;
+    margin-top: 360px;
+    margin-bottom: 200px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.article-small {
+    background: url('../../assets/img/amos-bar.jpg'), no-repeat center center;
+    background-size: cover;
+    height: 600px;
+    margin-top: 260px;
+    margin-bottom: 200px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+
+/*==============================================
+==================BREAK POINTS==================
+==============================================*/
+
+
+/* -------------IPADs Tablet etc--------------*/
+
+@media only screen and (max-width: 769px) {
+    .logoBig {
+        margin: 0 117px;
+    }
+    .logoBig img {
+        width: 500px;
+    }
+    .logoSmall img {
+        width: 150px;
+    }
+    .logoSmall {
+        padding-top: 120px;
+        margin: -104px 285px 0px;
+    }
+    .article-big {
+        margin-top: 240px;
+    }
+    .article-small {
+        margin-top: 240px;
+    }
+}
+
+
+/* -------------Tablets Small etc--------------*/
+
+@media only screen and (max-width: 601px) {
+    .logoBig {
+        margin: 0 78px;
+    }
+    .logoBig img {
+        width: 400px;
+    }
+    .logoSmall img {
+        width: 150px;
+    }
+    .logoSmall {
+        padding-top: 120px;
+        margin: -104px 200px 0px;
+    }
+    .article-big {
+        margin-top: 200px;
+    }
+    .article-small {
+        margin-top: 200px;
+    }
+}
+
+
+/* -------------iPhone 7+ etc--------------*/
+
+@media only screen and (max-width: 415px) {
+    .logoBig {
+        margin: 0 68px;
+    }
+    .logoBig img {
+        width: 280px;
+    }
+    .logoSmall img {
+        width: 130px;
+    }
+    .logoSmall {
+        padding-top: 120px;
+        margin: -100px 150px 0px;
+    }
+    .article-big {
+        margin-top: 170px;
+    }
+    .article-small {
+        margin-top: 200px;
+    }
+}
+
+
+/* -------------iPhone 7-6 --------------*/
+
+@media only screen and (max-width: 376px) {
+    .logoBig {
+        margin: 0 48px;
+    }
+    .logoBig img {
+        width: 280px;
+    }
+    .logoSmall img {
+        width: 130px;
+    }
+    .logoSmall {
+        padding-top: 120px;
+        margin: -100px 130px 0px;
+    }
+    .article-big {
+        margin-top: 170px;
+    }
+    .article-small {
+        margin-top: 200px;
+    }
+}
+
+
+/* -------------iPhone 5 etc --------------*/
+
+@media only screen and (max-width: 321px) {
+    .logoBig {
+        margin: 0 56px;
+    }
+    .logoBig img {
+        width: 200px;
+    }
+    .logoSmall img {
+        width: 100px;
+    }
+    .logoSmall {
+        padding-top: 120px;
+        margin: -100px 117px 0px;
+    }
+    .article-big {
+        margin-top: 130px;
+    }
+    .article-small {
+        margin-top: 130px;
+    }
+}
+
+
+/* -------------iPhone 5 etc --------------*/
+
+@media only screen and (min-width: 1281px) {
+    .article-big {
+        margin-top: 360px;
+    }
+    .article-small {
+        margin-top: 360px;
+    }
+}

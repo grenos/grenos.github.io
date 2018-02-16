@@ -1,0 +1,89 @@
+.main-cont{
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden;
+}
+.amin-row{
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+
+/* The side navigation menu */
+.sidenav {
+    height: 100%; 
+    width: 80px; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4); 
+    overflow-x: hidden; 
+    padding-top: 20px; 
+    transition: 0.5s; 
+    border-right: 2px rgba(255, 255, 255, 0.7) solid;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    margin: 0 auto;
+    width: 50%;
+    padding: 20px 1px; 
+    text-decoration: none !important;
+    font-size: 30px;
+    color: rgba(255, 255, 255, 0.7);
+    display: block;
+    transition: 0.3s
+}
+
+p{
+    display: inline;
+    vertical-align: middle;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.5em;
+    margin-left: 30px;
+    color: white;
+    
+}
+
+.hidden{
+    display: none;
+}
+
+.sidenav a:hover:nth-child(1) {
+ color: #ff8a80;
+}
+
+.sidenav a:hover:nth-child(2) {
+ color: #ea80fc;
+}
+
+.sidenav a:hover:nth-child(3) {
+ color: #82b1ff;
+}
+
+.sidenav a:hover:nth-child(4) {
+ color: #84ffff;
+}
+
+.sidenav a:hover:nth-child(5) {
+ color: #ccff90;
+}
+
+.sidenav a:hover:nth-child(6) {
+ color: #ffe57f;
+}
+
+.sidenav a:hover:nth-child(7) {
+ color: #ff9e80;
+}
+
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 569px) {
+    .sidenav {
+        padding-top: 50px;
+    }
+    .sidenav a {font-size: 18px;}
+}

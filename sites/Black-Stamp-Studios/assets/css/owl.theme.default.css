@@ -1,0 +1,130 @@
+/**
+ * Owl Carousel v2.2.1
+ * Copyright 2013-2017 David Deutsch
+ * Licensed under  ()
+ */
+
+
+/*
+ * 	Default theme - Owl Carousel CSS File
+ */
+
+.owl-theme .owl-nav {
+    margin-top: 10px;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.owl-theme .owl-nav [class*='owl-'] {
+    color: #FFF;
+    margin: 5px;
+    padding: 4px 7px;
+    background: transparent;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.owl-theme .owl-nav [class*='owl-']:hover {
+    background: transparent;
+    color: #DE5A56;
+    text-decoration: none;
+}
+
+.owl-prev {
+    position: absolute;
+    top: 25%;
+    margin-left: -30px!important;
+    display: block!important;
+    border: 0px solid black;
+}
+
+.owl-next {
+    position: absolute;
+    top: 25%;
+    right: 25px;
+    display: block!important;
+    border: 0px solid black;
+}
+
+@media only screen and (max-width: 768px) {
+    .owl-prev {
+        top: 25%;
+    }
+    .owl-next {
+        top: 25%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .owl-prev {
+        top: 15%;
+    }
+    .owl-next {
+        top: 15%;
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    .owl-prev {
+        top: 17%;
+    }
+    .owl-next {
+        top: 17%;
+        right: -5px;
+    }
+}
+
+@media only screen and (max-width: 410px) {
+    .owl-prev {
+        top: 30%;
+    }
+    .owl-next {
+        top: 30%;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+    .owl-prev {
+        top: 26%;
+    }
+    .owl-next {
+        top: 26%;
+    }
+}
+
+.owl-theme .owl-nav .disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.owl-theme .owl-dots {
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.owl-theme .owl-dots .owl-dot {
+    display: inline-block;
+    zoom: 0.8;
+    *display: inline;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+    width: 18px;
+    height: 5px;
+    margin: 4px 4px;
+    background: #424242;
+    display: block;
+    -webkit-backface-visibility: visible;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -moz-transition: all 0.4s ease-in-out 0s;
+    transition: all 0.4s ease-in-out 0s;
+}
+
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
+    background: #D6D6D6;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -moz-transition: all 0.4s ease-in-out 0s;
+    transition: all 0.4s ease-in-out 0s;
+}
