@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/styles.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Material Contacts</title>
+</head>
+
+<body onload="fetchContacts()">
+
+
+    <div class="row main">
+
+        <form id="form" class="col s12 m5 l3 form grey lighten-5">
+            <h5 class="center-align grey-text text-darken-2 small-header">Import Contact</h5>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="first_name" type="text" class="validate">
+                    <label for="first_name">First Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="last_name" type="text" class="validate">
+                    <label for="last_name">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="home_number" type="number" class="validate">
+                    <label for="home_number">Home Number</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="mobile_number" type="number" class="validate">
+                    <label for="mobile_number">Mobile Number</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" type="email" class="validate">
+                    <label for="email">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 center-align">
+                    <button id="submitBtn" class="btn waves-effect waves-light teal" type="submit" name="action">Import</button>
+                </div>
+            </div>
+            <div class="footer-copyright center-align">© 2018 Vasilis Green Version 0.4</div>
+
+        </form>
+
+        <div class="col s12 m7 l9 grey lighten-3 lists">
+            <h4 class="center-align grey-text text-darken-2 medium-header">My Contacts</h4>
+
+            <div class="input-field mt10 col s12">
+                <input id="js-search" type="text" class="validate big-in">
+                <label for="Search">Search Here</label>
+            </div>
+
+            <div id="js-contactsPrint" class="container"></div>
+
+        </div>
+       
+        <div class="card-modal" id="js-card-modal">
+            <div class="modal-content">
+                    <div class="col s12 m6 offset-m3 card-open" id="js-card-open">
+                       
+
+                    </div>
+                </div>
+
+            </div>
+      
+
+    </div>
+
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+</body>
+
+</html>
