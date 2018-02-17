@@ -4,6 +4,10 @@ var filter = document.getElementById('js-search').addEventListener('keyup', filt
 var modal = document.getElementById('js-card-modal');  // get outer modal div
 window.addEventListener('click', clickOutside); // listen for click on window element
 
+var confirmDel = document.getElementById('js-confirmDelete');  // get outer confirm delete div
+var deleteBtn = document.getElementById('js-delete-btn');
+var cancelBtn = document.getElementById('js-cancel-btn').addEventListener('click', cancelDel); 
+
 
 function saveInputs(e){ // save to local storage function
     e.preventDefault(); // prevent default page submit
@@ -69,7 +73,7 @@ function fetchContacts() { // write contacts on DOM function
             '<ul class="collection">'+
                 '<li class="collection-item">'+
                     '<a onclick="openModal(\''+uniqueId+'\')" href="#">'+name+' '+surname+'</a>'+
-                    '<a onclick="deleteContact(\''+uniqueId+'\')" href="#" class="secondary-content"><i class="material-icons icon-grey">delete</i></a>'+
+                    '<a onclick="openDelete(\''+uniqueId+'\')" href="#" class="secondary-content"><i class="material-icons icon-grey">delete</i></a>'+
                     '<a href="mailto:'+email+'\'?Subject=Hello!" target="_top" class="secondary-content" ><i class="material-icons icon-grey">email</i></a>'+
                     '<a href="tel:'+mobileNo+'" class="secondary-content" ><i class="material-icons icon-grey">phone_iphone</i></a>'+
                     '<a href="tel:'+homeNo+'" class="secondary-content" ><i class="material-icons icon-grey">phone</i></a>'+    
@@ -97,9 +101,9 @@ function printCard (uniqueId){ // print contact card in modal
                         '<a href="tel:'+contacts[i].homeNo+'" class="waves-effect waves-light"><i class="material-icons right">phone</i></a>'+         
                         '<a href="tel:'+contacts[i].mobileNo+'" class="waves-effect waves-light"><i class="material-icons right">phone_iphone</i></a>'+
                         '<a href="mailto:'+contacts[i].email+'?Subject=Hello!" target="_top" class="waves-effect waves-light"><i class="material-icons right">email</i></a>'+
-                        '<a onclick="deleteContact(\''+uniqueId+'\')" class="waves-effect waves-light"><i class="material-icons right">delete</i></a>'+
+                        '<a onclick="openDelete(\''+uniqueId+'\')" class="waves-effect waves-light"><i class="material-icons right">delete</i></a>'+
                 
-                        '<a href="https://www.instagram.com/explore/people/\''+contacts[i].name+contacts[i].surname+'"\' target="_blank" class="waves-effect waves-light secondary-content"><img src="icons/Insta_icon.png"</a>'+
+                        '<a href="https://www.instagram.com/explore/people/\''+contacts[i].name+contacts[i].surname+'"\' target="_blank" class="waves-effect waves-light secondary-content"><img src="icons/insta_icon.png"</a>'+
                 
                         '<a href="https://www.facebook.com/search/top/?q=\''+contacts[i].name+contacts[i].surname+'"\' target="_blank" class="waves-effect waves-light secondary-content"><img src="icons/f_icon.png""</a></a>'+
                 
@@ -129,15 +133,35 @@ function randomImg (){ //assign random number to pics
     }
     
 
+function  openDelete(){ // open confirm delete modal
+    confirmDel.style.display = 'block';  
+}
+
+confirmDel.addEventListener('click', function(){
+    var contacts = JSON.parse(localStorage.getItem('contacts')); // get JSON
+    for (var i = 0; i < contacts.length; i++ ) {  // loop through the contacts array
+        var uniqueId = contacts[i].id;
+    }  
+    deleteContact(uniqueId);
+})
+
+function cancelDel(){ // hide confirm delete modal
+    confirmDel.style.display = 'none';
+}
+
+
 function deleteContact(uniqueId) { // delete contact on icon click
     var contacts = JSON.parse(localStorage.getItem('contacts')); // get JSON
-
+    
     for (var i = 0; i < contacts.length; i++ ) {  // loop through the contacts array
         if (contacts[i].id == uniqueId){ // match the delete click with the correct object
             contacts.splice(i, 1); // remove object from array
         }
         if ( modal.style.display = 'block'){ // if delete from modal card
-            modal.style.display = 'none';  // delete the modal card also  
+            modal.style.display = 'none';  // delete the modal card also
+        }
+        if ( confirmDel.style.display = 'block'){   
+            confirmDel.style.display = 'none';
         }
     }
     
@@ -155,7 +179,8 @@ function filterNames () { // search through contacts
         
         for(var i = 0; i < ul.length; i++){ //loop through collection items
             var a = ul[i].getElementsByTagName('a')[0]; //get links inside of li items
-
+            //setTimeout(filterNames, 5);
+            
             if(a.innerHTML.toUpperCase().indexOf(filterValue) > -1 ){ // if any of the letters match to the input value
                 ul[i].style.display = ''; // do nothing 
             }else{
@@ -186,6 +211,5 @@ function clickOutside (e){   // if click outside card close it
         modal.style.display = 'none';
     }    
 }
-
 
 
