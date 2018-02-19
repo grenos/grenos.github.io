@@ -15,7 +15,7 @@ input[type=number] {
 
 .form {
     height: 100vh !important;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .lists {
@@ -23,6 +23,24 @@ input[type=number] {
     overflow: auto;
     background-color: #eeeeee;
 }
+
+.color-btn{
+    width: 10%;
+    padding: 20px;
+    margin: 0 .5rem 1rem;  
+}
+
+.btn-anim{
+    -webkit-filter: grayscale(.5);
+            filter: grayscale(.5);
+    -webkit-animation-name: colorSelector; 
+            animation-name: colorSelector;
+    -webkit-animation-duration: .2s;
+            animation-duration: .2s;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+}
+
 
 a {
     color: #424242;
@@ -56,8 +74,7 @@ i.icon-grey:hover {
 }
 
 ul {
-    -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.19), 0 4px 9px rgba(0, 0, 0, 0.23);
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.19), 0 4px 9px rgba(0, 0, 0, 0.23);
+   border: none; 
 }
 
 .small-header {
@@ -122,6 +139,30 @@ ul {
     border-bottom: 1px solid #f5f5f5 !important;
 }
 
+.color-group-yellow{
+    border-left: 10px solid #ffeb3b;
+}
+
+.color-group-green{
+    border-left: 10px solid #66bb6a;
+}
+
+.color-group-blue{
+    border-left: 10px solid #2196f3;
+}
+
+.color-group-pink{
+    border-left: 10px solid #f06292;
+}
+
+.color-header{
+    font-weight: 200;
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+    color: #8C8C8C;
+}
+
+
 /*==========================================*/
 
 .confirm-delete{
@@ -144,8 +185,8 @@ ul {
             box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .2),0 7px 20px 0 rgba(0, 0, 0, .2);
     -webkit-animation-name: modalopen;
             animation-name: modalopen;
-    -webkit-animation-duration: .5s;
-            animation-duration: .5s;
+    -webkit-animation-duration: .1s;
+            animation-duration: .1s;
     
 }
 
@@ -179,3 +220,26 @@ ul {
         opacity: 1
     }
 }
+
+@-webkit-keyframes colorSelector{
+    from{
+       -webkit-transform: scale(1);
+               transform: scale(1)    
+    }
+    to{
+        -webkit-transform: scale(.5);
+                transform: scale(.5)
+    }
+}
+
+@keyframes colorSelector{
+    from{
+       -webkit-transform: scale(1);
+               transform: scale(1)    
+    }
+    to{
+        -webkit-transform: scale(.7);
+                transform: scale(.7)
+    }
+}
+

@@ -9,9 +9,30 @@ var deleteBtn = document.getElementById('js-delete-btn');
 var cancelBtn = document.getElementById('js-cancel-btn').addEventListener('click', cancelDel); 
 
 
+
+var colorsDiv = document.getElementById('js-colors-div'); 
+var colors = colorsDiv.getElementsByTagName("button");
+
+var btnOne = document.getElementById('js-one');
+var btnOne = document.getElementById('js-two');
+var btnOne = document.getElementById('js-three');
+var btnOne = document.getElementById('js-four');
+
+    for (var i = 0; i < colors.length; i++) { // loop through all the buttons
+        colors[i].onclick = function(e) {  // onclick do
+            
+            var highlight = e.target;  // put clicked button to a var
+            colorBank.color = highlight.value;  // put button's value to array
+            
+            highlight.classList.toggle('btn-anim'); // toggle the animation class
+        }
+    }
+    colorBank ={}
+
+
 function saveInputs(e){ // save to local storage function
     e.preventDefault(); // prevent default page submit
-    
+   
     var fName = document.getElementById('first_name').value; // get values of inputs
     var lName = document.getElementById('last_name').value;
     var home = document.getElementById('home_number').value;
@@ -30,7 +51,8 @@ function saveInputs(e){ // save to local storage function
         "homeNo": home,
         "mobileNo": mobile,
         "email": email,
-        "id": id
+        "id": id,
+        "color": colorBank.color
     }
  
     if(localStorage.getItem('contacts') === null){  // if local storage is empty 
@@ -47,6 +69,8 @@ function saveInputs(e){ // save to local storage function
 }
 
 
+
+
 function fetchContacts() { // write contacts on DOM function  
     var contacts = JSON.parse(localStorage.getItem('contacts')); // get array from local storage
     
@@ -60,7 +84,7 @@ function fetchContacts() { // write contacts on DOM function
             return 0;
         })    
     }
-    
+        
     for (var i = 0; i < contacts.length; i++ ) {  // loop through the contacts array
         var name = contacts[i].name; // and get the values from each input in a var
         var surname = contacts[i].surname;
@@ -68,10 +92,11 @@ function fetchContacts() { // write contacts on DOM function
         var mobileNo = contacts[i].mobileNo;
         var email = contacts[i].email;
         var uniqueId = contacts[i].id;
+        var color = contacts[i].color;
        
         contactsPrint.innerHTML +=  // print list to DOM
             '<ul class="collection">'+
-                '<li class="collection-item">'+
+                '<li class="collection-item color-group-'+color+'">'+
                     '<a onclick="openModal(\''+uniqueId+'\')" href="#">'+name+' '+surname+'</a>'+
                     '<a onclick="openDelete(\''+uniqueId+'\')" href="#" class="secondary-content"><i class="material-icons icon-grey">delete</i></a>'+
                     '<a href="mailto:'+email+'\'?Subject=Hello!" target="_top" class="secondary-content" ><i class="material-icons icon-grey">email</i></a>'+
@@ -82,6 +107,9 @@ function fetchContacts() { // write contacts on DOM function
     }
    
 }
+
+
+
 
 function printCard (uniqueId){ // print contact card in modal
     var contacts = JSON.parse(localStorage.getItem('contacts'));
@@ -119,6 +147,9 @@ function printCard (uniqueId){ // print contact card in modal
     randomImg(); // call random picture function
 }
 
+
+
+
 placeholders = [  // array of pics
     'img/placeholder.jpg', 
     'img/placeholder2.jpg', 
@@ -133,6 +164,8 @@ function randomImg (){ //assign random number to pics
     }
     
 
+
+
 function  openDelete(){ // open confirm delete modal
     confirmDel.style.display = 'block';  
 }
@@ -141,7 +174,6 @@ deleteBtn.addEventListener('click', function(){
     var contacts = JSON.parse(localStorage.getItem('contacts')); // get JSON
     for (var i = 0; i < contacts.length; i++ ) {  // loop through the contacts array
         var uniqueId = contacts[i].id;
-        
     }  
     deleteContact(uniqueId);
 })
@@ -149,6 +181,8 @@ deleteBtn.addEventListener('click', function(){
 function cancelDel(){ // hide confirm delete modal
     confirmDel.style.display = 'none';
 }
+
+
 
 
 function deleteContact(uniqueId) { // delete contact on icon click
@@ -172,6 +206,7 @@ function deleteContact(uniqueId) { // delete contact on icon click
 }
 
 
+
 function filterNames () { // search through contacts
     var filterValue = document.getElementById('js-search').value.toUpperCase(); // get value of input 
 
@@ -191,6 +226,7 @@ function filterNames () { // search through contacts
 }    
 
 
+
 function validateForm (fName, lName) { // validate form
     
     if(!fName && lName || fName && !lName || fName && lName){  // if one of the (name, surname) inputs is filled or both
@@ -201,11 +237,12 @@ function validateForm (fName, lName) { // validate form
 }
 
 
+
+
 function openModal (uniqueId){ //open modal
     modal.style.display = 'block'; // set it to visible
     printCard(uniqueId); // call the function to print the modal card on DOM
 }
-
 
 function clickOutside (e){   // if click outside card close it
     if(e.target === modal){
@@ -214,3 +251,6 @@ function clickOutside (e){   // if click outside card close it
 }
 
 
+//create button
+//add event listeners click
+//
