@@ -1,0 +1,17 @@
+TO DO 
+
+
+HTML/CSS
+Adapt to smaller devices
+
+
+JS
+Add headers letters over list items
+Add ability to change details in a contact
+Add abilty to short items by color group
+
+EXTRA 
+Minimise use of jQuery on input elements?
+Remove form control alert replace with tooltips or modal
+
+

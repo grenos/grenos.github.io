@@ -9,27 +9,6 @@ var deleteBtn = document.getElementById('js-delete-btn');
 var cancelBtn = document.getElementById('js-cancel-btn').addEventListener('click', cancelDel); 
 
 
-
-var colorsDiv = document.getElementById('js-colors-div'); 
-var colors = colorsDiv.getElementsByTagName("button");
-
-var btnOne = document.getElementById('js-one');
-var btnOne = document.getElementById('js-two');
-var btnOne = document.getElementById('js-three');
-var btnOne = document.getElementById('js-four');
-
-    for (var i = 0; i < colors.length; i++) { // loop through all the buttons
-        colors[i].onclick = function(e) {  // onclick do
-            
-            var highlight = e.target;  // put clicked button to a var
-            colorBank.color = highlight.value;  // put button's value to array
-            
-            highlight.classList.toggle('btn-anim'); // toggle the animation class
-        }
-    }
-    colorBank ={}
-
-
 function saveInputs(e){ // save to local storage function
     e.preventDefault(); // prevent default page submit
    
@@ -66,9 +45,33 @@ function saveInputs(e){ // save to local storage function
     }
     fetchContacts(); // call function to write contacts on DOM
     document.getElementById('form').reset();  // Clear form
+    
 }
 
 
+
+
+var colorsDiv = document.getElementById('js-colors-div'); 
+var colors = colorsDiv.getElementsByTagName("button");
+
+    for (var i = 0; i < colors.length; i++) { // loop through all the buttons                   
+        
+        colors[i].onclick = function(e) {  // onclick do                               
+        
+            var highlight = e.target;  // put clicked button to a var                   
+            colorBank.color = highlight.value;  // put button's value to array
+
+            highlight.classList.add('btn-anim'); // toggle the animation class
+           
+            for (let sibling of this.parentNode.children) {
+                sibling.classList.remove('btn-anim');
+                console.log(sibling);
+            }
+            this.classList.add('btn-anim');
+                  
+        }
+    };
+     colorBank ={}
 
 
 function fetchContacts() { // write contacts on DOM function  
