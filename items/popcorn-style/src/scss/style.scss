@@ -1,0 +1,333 @@
+body{
+    background-color: black;
+    overflow: auto;
+}
+
+h1,h2,h3,h4,h5{
+  font-family: 'Titillium Web', sans-serif;
+}
+
+p{
+  font-family: 'Muli', sans-serif;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, .9);
+    box-shadow: 0px 7px 25px 10px rgba(0,0,0,.9);
+    
+    ul{
+
+    }
+      li{
+
+       a{
+        color: white;
+
+          i{
+            margin-right: 5px;
+          }
+       }
+    }
+    span{
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+
+      .fa-caret-up{
+        color: white;
+        margin-right: 5px;
+        cursor: pointer;
+      }
+
+    }
+    
+    input{
+      background-color: #212121;
+      border: #212121;
+    }
+    input:focus{
+      background-color: #353535;
+    }
+      
+}
+
+.active-link {
+  filter: drop-shadow(7px 7px 10px rgb(121, 202, 255)); // make it an active link class
+  color: rgb(121, 202, 255);
+}
+
+.load-more{
+  padding: 20px;
+
+}
+
+// masonry  // todo nest everything inside SCSS style
+.grid{
+  margin-top: 50px;
+}
+
+
+.grid-item {
+  float: left;
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  animation-name: modalopen;
+  animation-duration: .2s;
+}
+
+.grid-item img {
+  display: block;
+  max-width: 100%;
+  position: relative; 
+}
+
+
+.grid-item .overlay {
+  background: linear-gradient(to top, rgba(39, 64, 70, 1), rgba(230, 218, 218, 1)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  transition: all 0.2s ease-in-out 0s;
+}
+
+.grid-item:hover .overlay {
+  opacity: .9;
+}
+
+.gall-text {
+  position: absolute;
+  text-align: center;
+  padding: .3rem;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s ease-in-out 0s;
+}
+
+.grid-item:hover .gall-text {
+  top: 40%;
+  left: 50%;
+  opacity: 1;
+}
+
+.gall-text h4 {
+  color: black;
+  text-shadow: 1px 1px 2px white;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+  font-size: 1.5em;
+  
+}
+
+.gall-text span {
+  color: black;
+  // text-shadow: 1px 1px 2px white;
+  font-weight: 300;
+  font-size: 1.1rem;
+    i{
+      color: red;
+      
+    }
+}
+
+.fadeIn-bottom {
+  top: 80%;
+}
+
+/////////////////////////////
+
+.myModal{ 
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-size: cover;
+  animation-name: modalopen;
+  animation-duration: 1s;
+  overflow: hidden;
+  padding-bottom: 30px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+
+    .fa-times-circle{
+      color: white;
+      font-size: 2.5rem;
+      position: fixed;
+      top: 2.5%;
+      left: 1%;
+      transition: .1s;
+      cursor: pointer;
+      z-index: inherit;
+    }
+    .fa-times-circle:hover{
+      transition: .1s;
+      color: #ff5252;
+    }
+    .fa-imdb{
+      color: white;
+      font-size: 2.5rem;
+      position: fixed;
+      left: 1%;
+      bottom: 3%;
+      transition: .1s;
+    }
+    .fa-imdb:hover{
+      color: #F1BA15;
+      transition: .1s;
+    }
+    .fa-amazon{
+      color: white;
+      font-size: 2.5rem;
+      position: fixed;
+      left: 5%;
+      bottom: 3%;
+      transition: .1s;
+    }
+    .fa-amazon:hover{
+      color: #F7850A;
+      transition: .1s;
+    }
+    .icon-netflix::before {
+      color: white; 
+      font-size: 2.2rem;
+      position: fixed;
+      left: 9%;
+      bottom: 3.3%;
+      transition: .1s;   
+    }
+    .icon-netflix:hover::before{
+      color: #e50914;
+      transition: .1s;  
+    }
+    .fa-globe{
+      color: white;
+      font-size: 2.4rem;
+      position: fixed;
+      left: 13%;
+      bottom: 3%;
+      transition: .1s;
+    }
+    .fa-globe:hover{
+      color: #274046;
+      transition: .1s;
+    }
+    h2{
+      color: white;
+      font-size: 3.2rem;
+      letter-spacing: 2px;
+      line-height: 4.5rem;  
+      text-align: right;
+      padding-bottom: 8px;
+    }
+    h4{
+      color: #e0e0e0;
+      letter-spacing: 2px;
+      font-weight: 100;
+      text-align: right;
+      font-style: italic;
+      font-size: 1.4rem;
+      padding-bottom: 20px;
+    }
+    p{
+      color: white;
+      font-size: .9rem;
+      font-weight: 300;
+      line-height: 1.5rem;
+      letter-spacing: 1px;
+        span{
+          font-size: 1.2rem;
+          font-family: 'Titillium Web', sans-serif;
+          color: #ff5252;
+        }
+    }
+    ul{
+      padding-top: 20px;
+        .title{
+          font-size: 1.2rem;
+          font-family: 'Titillium Web', sans-serif;
+          color: #ff5252;
+        }
+        li{
+          border: none;
+          p{
+            margin-bottom: 0;
+            padding-top: 5px;
+            span{
+              font-size: 1.1rem;
+              font-family: 'Titillium Web', sans-serif;
+              color: #ff5252;
+            }
+          }
+          padding: 0;
+          background-color: transparent;
+          color: white;
+        }
+      }
+      .genres{
+        padding-top: 5px;
+      }
+      button{
+        position: fixed;
+        bottom: 3%;
+        right: 3%;
+    }
+    .video-container{
+      background-color: rgba(0, 0, 0, .8);
+      display: none;
+      overflow: none;
+      z-index: 3;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      padding: 0;
+      animation-name: modalopen;
+      animation-duration: .5s;
+    }
+    .video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      //padding: 4.5rem 9rem;
+    }
+}
+
+// .no-movie-found h2{
+//   color: #212121;
+//   font-size: 2.5rem;
+//   margin-top: 25%;
+// }
+
+// /*/////////////////////////////*/
+@-webkit-keyframes modalopen{
+  from{opacity: 0}
+  to{opacity: 1}
+}
+
+@keyframes modalopen{
+  from{opacity: 0}
+  to{opacity: 1}
+}
+
+
+
+
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
