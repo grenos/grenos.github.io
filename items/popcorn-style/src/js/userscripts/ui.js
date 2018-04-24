@@ -31,7 +31,7 @@ class UI {
                 const votes = movie.vote_average; 
                 const id = movie.id;  
 
-                output += `
+                output = `
                         <div class="grid-item col-md-2">
                             <div class="grid-item-content">
                                 <img src="http://image.tmdb.org/t/p/w500/${img}">
@@ -46,7 +46,7 @@ class UI {
                             </div>
                         </div>
                     `;
-                document.querySelector('.grid').innerHTML = output;  
+                document.querySelector('.grid').innerHTML += output;  
         })
     }
 
@@ -79,7 +79,7 @@ class UI {
                 const votes = serie.vote_average;
                 const id = serie.id;
 
-                output += `
+                output = `
                     <div class="grid-item col-md-2">
                         <div class="grid-item-content">
                             <img src="http://image.tmdb.org/t/p/w500/${img}">
@@ -94,8 +94,8 @@ class UI {
                         </div>
                     </div>
                 `;
-                document.querySelector('.grid').innerHTML = output;   
-        })
+                document.querySelector('.grid').innerHTML += output;   
+        });
     }
 
 
@@ -146,7 +146,7 @@ class UI {
                     </div>    
                 `;
                 document.querySelector('.grid').innerHTML = output;
-            })
+            });
 
 
             const searchQuerySerie = searchCatalogueRes.searchSeriesCatalogueInfo.results;
@@ -192,7 +192,7 @@ class UI {
                     `;
                     document.querySelector('.grid').innerHTML = output;
 
-                })   
+                });   
                 
                 // remove load more button on search results
                 document.getElementById('load-more').style.visibility = 'hidden';
@@ -280,7 +280,7 @@ class UI {
             
             // set background in CSS
             const modalBg = document.querySelector('.myModal');
-            modalBg.style.backgroundImage = `linear-gradient(45deg, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 20%,rgba(255,255,255,.15) 20%,rgba(0,0,0,0) 40%,rgba(0,0,0,0.80) 40%,rgba(0,0,0,0.80) 100%), url(http://image.tmdb.org/t/p/w1280/${bDrop})`; 
+            modalBg.style.backgroundImage = `linear-gradient(45deg, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 20%,rgba(255,255,255,.15) 20%,rgba(0,0,0,0) 40%,rgba(0,0,0,0.75) 40%,rgba(0,0,0,0.75) 100%), url(http://image.tmdb.org/t/p/w1280/${bDrop})`; 
 
             // Tell youtube API to load player
             loadYTplayer();
@@ -357,7 +357,7 @@ class UI {
 
         // set background in CSS
         const modalBgS = document.querySelector('.myModal');
-        modalBgS.style.backgroundImage = `linear-gradient(45deg, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 20%,rgba(255,255,255,.15) 20%,rgba(0,0,0,0) 40%,rgba(0,0,0,0.80) 40%,rgba(0,0,0,0.80) 100%), url(http://image.tmdb.org/t/p/w1280/${bDrop})`;
+        modalBgS.style.backgroundImage = `linear-gradient(45deg, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 20%,rgba(255,255,255,.15) 20%,rgba(0,0,0,0) 40%,rgba(0,0,0,0.75) 40%,rgba(0,0,0,0.75) 100%), url(http://image.tmdb.org/t/p/w1280/${bDrop})`;
 
         // Tell youtube API to load player
         loadYTplayer();
@@ -390,38 +390,159 @@ class UI {
     activeLink (e) {
         const movies = document.getElementById('movies');
         const series = document.getElementById('series');
-        const mIcon = document.querySelector('.fa-film');
-        const sIcon = document.querySelector('.fa-tv');
         const clicked = e.target.id;
-        
         
         // if movies is clicked add class on a and i and remove from series
         if (clicked === 'movies') {
 
             series.classList.remove('active-link');
-            sIcon.classList.remove('active-link');
             movies.classList.add('active-link');
-            mIcon.classList.add('active-link');
      
         //else add class to series and remove from movies
         } else if (clicked === 'series') {
 
             movies.classList.remove('active-link');
-            mIcon.classList.remove('active-link');
             series.classList.add('active-link');
-            sIcon.classList.add('active-link');
         }
     }
 
-    // BrowseByGenre () {
+    printMovieGenres (genreListMoviesRes) {
 
-        
+        const movieGenre = genreListMoviesRes.genres;
+        let output = '';
 
-    // }
+        movieGenre.forEach( genre => {
+            
+            const id = genre.id;
+            const name = genre.name;
 
-  
+            output += `
+                <a class="dropdown-item" data-genre="${id}" href="#">${name}</a>
+            `
+            document.querySelector('.dropdown-menu').innerHTML = output;
+
+        });
+    }
+
+    printSeriesGenres (genreListSeriesRes) {
+
+        const serieGenre = genreListSeriesRes.genres;
+        let output = '';
+
+        serieGenre.forEach( genre => {
+            
+            const id = genre.id;
+            const name = genre.name;
+
+            output += `
+                <a class="dropdown-item" data-genre="${id}" href="#">${name}</a>
+            `
+            document.querySelector('.dropdown-menu').innerHTML = output;
+
+        });
+    }
 
 
+    //! PRINT BY GENRE
+    printMovieByGenre (movieGenreRes) {
+
+        let output = ''; 
+
+        const movieGenre = movieGenreRes.results;
+        const filteredMovies = movieGenre.reduce((acc, movie) => {
+            
+            if (movie.poster_path == null) {
+                movie.rejectionReason = 'no photo'
+                acc.rejects.push(movie)
+                return acc
+            }
+            if (movie.popularity < 4) {
+                movie.rejectionReason = 'bad rating'
+                acc.rejects.push(movie)
+                return acc
+            }
+                acc.matches.push(movie)
+                return acc
+                }, { matches: [], rejects: [] })
+               
+            
+            filteredMovies.matches.forEach( movie => {
+
+                let img = movie.poster_path;
+                const title = movie.original_title;
+                const date = movie.release_date.substring(0, 4);
+                const votes = movie.vote_average; 
+                const id = movie.id;  
+
+                output = `
+                        <div class="grid-item col-md-2">
+                            <div class="grid-item-content">
+                                <img src="http://image.tmdb.org/t/p/w500/${img}">
+                                <div id="${id}" class="overlay" data-id="movie"></div>
+                                <div class="gall-text text-center">
+                                    <h4 id="${id}" class="content-title" data-id="movie">${title}</h4>
+                                    <span id="${id}" data-id="movie"><i class="fas fa-heart fa-sm"></i> ${votes} hearts<span>
+                                    <br>
+                                    <span id="${id}" data-id="movie">${date}</span>   
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    `;
+                document.querySelector('.grid').innerHTML += output;  
+        });
+
+    }
+
+    printSeriesByGenres (serieGenreRes) {
+
+        let output = '';
+
+        const seriesGenre = serieGenreRes.results;
+        const filteredSeries = seriesGenre.reduce((acc, serie) => {
+
+            if (serie.poster_path == null) {
+                serie.rejectionReason = 'no photo'
+                acc.rejects.push(serie)
+                return acc
+            }
+            if (serie.popularity < 4) {
+                serie.rejectionReason = 'bad rating'
+                acc.rejects.push(serie)
+                return acc
+            }
+                acc.matches.push(serie)
+                return acc
+                }, { matches: [], rejects: [] })
+            
+            
+            filteredSeries.matches.forEach( serie => {
+
+                let img = serie.poster_path;
+                const name = serie.name;       
+                const date = serie.first_air_date.substring(0, 4);
+                const votes = serie.vote_average;
+                const id = serie.id;
+
+                output = `
+                    <div class="grid-item col-md-2" id="genre">
+                        <div class="grid-item-content">
+                            <img src="http://image.tmdb.org/t/p/w500/${img}">
+                            <div id="${id}" class="overlay" data-id="serie"></div>
+                                <div class="gall-text">
+                                    <h4 id="${id}" class="content-title" data-id="serie">${name}</h4>
+                                    <span id="${id}" data-id="serie"><i class="fas fa-heart fa-sm"></i> ${votes} hearts<span>
+                                    <br>
+                                    <span id="${id}" data-id="serie">${date}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.querySelector('.grid').innerHTML += output;   
+        });
+
+    }  
 
 }
 
@@ -429,11 +550,8 @@ class UI {
 
 //! IMPORTANT
 
+//TODO ///// fix genre pagination
 
 //TODO ////// loop through the modal response and eliminate movies and series without a video 
 
-//TODO ////// make textarea text color white on focus
-
-// TODO //// search by genre on navbar
-
-//TODO //// append new page to old one
+// TODO /// RESPONSIVE

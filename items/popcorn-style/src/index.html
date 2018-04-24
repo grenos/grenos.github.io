@@ -6,8 +6,8 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="/css/bootstrap.css">
+        <link rel="stylesheet" href="/css/style.css">
 
         <link rel="stylesheet" type="text/css" href="assets/other/style.css" /> 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
@@ -34,20 +34,24 @@
             </div>
 
             <li class="nav-item">
-              <a class="nav-link active-link" href="#" id="movies"><i class="fas fa-film fa-lg active-link"></i>Movies</a>
+              <a class="nav-link active-link" href="#!" id="movies">Movies</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" id="series"><i class="fas fa-tv fa-lg"></i>Series</a>
+              <a class="nav-link" href="#!" id="series">Series</a>
             </li>
           </ul>
 
-          <span class="navbar-brand mx-auto" id="openNav"><i class="fas fa-caret-up fa-lg"></i>Open</span>
+          <div class="dropdown ml-auto">
+            <button class="btn btn-md dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Genres
+            </button>
+            <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton"></div>
+          </div>
 
           <form class="form-search">
             <label class="sr-only" for="inlineFormInputGroup">Search</label>
             <div class="input-group">
               <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search">
-              <!-- <button type="submit" id="search-btn" class="btn btn-secondary"><i class="fas fa-search"></i></button> -->
             </div>
           </form>
           
@@ -63,21 +67,27 @@
     <div class="container-fluid load-more">
       <div class="row">
         <div class="col-sm-12 text-center">
-          <button type="button" id="load-more" class="btn btn-outline-secondary">Load More</button>
+          <button type="button" id="load-more" class="btn btn-outline-light">Load More</button>
         </div>
       </div>
     </div>
-   
-        <script src="js/libs/jquery.js"></script>
-        <script src="js/libs/bootstrap.js"></script>
 
-        <script src="js/userscripts/movieapi.js"></script>
+    <!-- <div class="container-fluid load-genres">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <button type="button" id="load-genres" class="btn btn-outline-secondary">More Movies</button>
+        </div>
+      </div>
+    </div> -->
+   
+        <script src="/js/libs/jquery.js"></script>
+        <script src="/js/libs/bootstrap.js"></script>
+
+        <script src="/js/userscripts/movieapi.js"></script>
         <script src="https://www.youtube.com/iframe_api"></script>
 
-        <!-- <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.min.js"></script> -->
-
-        <script src="js/userscripts/ui.js"></script>
-        <script src="js/userscripts/app.js"></script>
+        <script src="/js/userscripts/ui.js"></script>
+        <script src="/js/userscripts/app.js"></script>
 
         
 

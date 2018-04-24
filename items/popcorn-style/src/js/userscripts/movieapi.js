@@ -4,6 +4,7 @@ class Movie {
         //this.page = 1;
     }
    
+
     //! TOP MOVIES AND SERIES
     async topMovies (page) {
 
@@ -37,6 +38,7 @@ class Movie {
 
     }
 
+
     //! GET MOVIE AND SERIES AND CREDITS BY ID  <<<< MODAL >>>>>
     async searchMovieId (clickId) {
         const movieDetailsRes = await fetch(`https://api.themoviedb.org/3/movie/${clickId}?api_key=${this.apikey}&language=en-US&append_to_response=videos`);
@@ -60,17 +62,37 @@ class Movie {
     }
 
 
-    //! MOVIES AND SERIES BY GENRE
-    async movieGenre (page, genre) {
+    //! GET THE GENRES
+    async genreListMovies () {
 
-        const movieGenreRes = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${this.apikey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genre}`);
+        const genreListMoviesRes = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=fdde855cd4b047fb1a0ea24a7ec58362&language=en-US`);
+
+        const genreListMoviesInfo = await genreListMoviesRes.json();
+        return genreListMoviesInfo;
+
+    }
+
+    async genreListSeries () {
+
+        const genreListSeriesRes = await fetch(`https://api.themoviedb.org/3/genre/tv/list?api_key=fdde855cd4b047fb1a0ea24a7ec58362&language=en-US`);
+
+        const genreListSeriesInfo = await genreListSeriesRes.json();
+        return genreListSeriesInfo;
+
+    }
+
+
+     //! MOVIES AND SERIES BY GENRE
+     async movieGenre (page, genreId) {
+
+        const movieGenreRes = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${this.apikey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreId}`);
 
         const movieGenreInfo = await movieGenreRes.json();
         return movieGenreInfo;  
     }
 
-    async serieGenre (page, genre) {
-        const serieGenreRes = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${this.apikey}&language=en-US&sort_by=popularity.desc&page=${page}&with_genres=${genre}`);
+    async serieGenre (page, genreId) {
+        const serieGenreRes = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${this.apikey}&language=en-US&sort_by=popularity.desc&page=${page}&with_genres=${genreId}`);
 
         const serieGenreInfo = await serieGenreRes.json();
         return serieGenreInfo;
@@ -78,5 +100,6 @@ class Movie {
 
     
 }
+
 
 
