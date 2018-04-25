@@ -24,7 +24,7 @@ function getMovies(page) {
     movie.topMovies(page)
         .then(topMoviesRes => {
             ui.printMovies(topMoviesRes);
-            console.log(topMoviesRes);
+            //console.log(topMoviesRes);
         })
         .catch(err => console.log(err));
 }
@@ -35,7 +35,7 @@ function getSeries(page) {
     movie.topSeries(page)
         .then(topSeriesRes => {
             ui.printSeries(topSeriesRes);
-            console.log(topSeriesRes);
+            //console.log(topSeriesRes);
         })
         .catch(err => console.log(err));
 }
@@ -49,7 +49,7 @@ function getGenres() {
         movie.genreListMovies()
             .then(genreListMoviesRes => {
                 ui.printMovieGenres(genreListMoviesRes);
-                console.log(genreListMoviesRes);
+                //console.log(genreListMoviesRes);
             })
             .catch(err => console.log(err));
 
@@ -58,7 +58,7 @@ function getGenres() {
         movie.genreListSeries()
             .then(genreListSeriesRes => {
                 ui.printSeriesGenres(genreListSeriesRes);
-                console.log(genreListSeriesRes);
+                //console.log(genreListSeriesRes);
             })
             .catch(err => console.log(err));
     }
@@ -143,6 +143,12 @@ document.getElementById('inlineFormInputGroup').addEventListener('keyup', (e) =>
         movie.searchCatalogue(userText)
             .then(searchCatalogueRes => {
                 ui.printSearchCat(searchCatalogueRes);
+               
+                // if no results print ''no movie found''
+                if ( searchCatalogueRes.searchMovieCatalogueInfo.results < 1 && searchCatalogueRes.searchSeriesCatalogueInfo.results < 1) {
+                    ui.noMovieFound();
+                };
+
             })
             .catch(err => {
                 console.log(err);
@@ -158,6 +164,8 @@ document.getElementById('inlineFormInputGroup').addEventListener('keyup', (e) =>
         // clear dom from previous movies
         document.querySelector('.grid').innerHTML = '';
     }
+
+    
 
     e.preventDefault();
 })
@@ -175,7 +183,7 @@ document.querySelector('.navbar-nav').addEventListener('click', (e) => {
     //then set active link
     ui.activeLink(e);
     //call genre function
-    getGenres(); 
+    //getGenres(); 
     //set button to show if its hidden from searhc results
     document.getElementById('load-more').style.visibility = 'visible';
 });
@@ -186,13 +194,15 @@ document.querySelector('.navbar-nav').addEventListener('click', (e) => {
 // globals for counter
 let moviesPage = 1;
 let seriesPage = 1;
-document.getElementById('load-more').addEventListener('click', () => {
+
+document.getElementById('load-more').addEventListener('click', loadMore)
     
+function loadMore () {
+
   if (document.querySelector('#movies.active-link')) {
 
     moviesPage++;
     getMovies(moviesPage); 
- 
     
   } else if (document.querySelector('#series.active-link')) {
 
@@ -201,47 +211,50 @@ document.getElementById('load-more').addEventListener('click', () => {
 
   }
   
-});
+}
 
 
 
+// * NEEDS REFACTORING
 //! PRINT BY GENRE
 // get access to genre list on nav 
-document.querySelector('.dropdown-menu').addEventListener('click', getByGenre);
+document.querySelector('.dropdown-menu').addEventListener('click', printByGenre);
 
-function getByGenre (e, page) {
+function printByGenre (e) {
 
-
-    // clean dom from previous movies
-    document.querySelector('.grid').innerHTML = '';
-    // clean search input
-    ui.clearInput();
-    // fetch the data-genre of each link
-    const genreId = e.target.dataset.genre;
-
-
-    // on click of each sent data to api call
-    if (document.querySelector('#movies.active-link')) {  //! movies genres
+     // clean dom from previous movies
+     document.querySelector('.grid').innerHTML = '';
+     // clean search input
+     ui.clearInput();
+     //show load more button if coming from search
+     document.getElementById('load-more').style.visibility = 'visible';
+     // fetch the data-genre of each link
+     const genreId = e.target.dataset.genre;
+ 
+     
+     // on click of each sent data to api call
+     if (document.querySelector('#movies.active-link')) {  //! movies genres
+         
+         movie.movieGenre(moviesPage, genreId)
+             .then(movieGenreRes => {
+                 ui.printMovieByGenre(movieGenreRes);
+                 //console.log(movieGenreRes);
+             })
+             .catch(err => console.log(err));
+ 
+     } else if (document.querySelector('#series.active-link')) { //! series genres
         
-        movie.movieGenre(moviesPage, genreId)
-            .then(movieGenreRes => {
-                ui.printMovieByGenre(movieGenreRes);
-                console.log(movieGenreRes);
-            })
-            .catch(err => console.log(err));
-
-    } else if (document.querySelector('#series.active-link')) { //! series genres
-       
-        movie.serieGenre(seriesPage, genreId)
-            .then(serieGenreRes => {
-                ui.printSeriesByGenres(serieGenreRes);
-                console.log(serieGenreRes);
-            })
-            .catch(err => console.log(err));
-
-    }
+         movie.serieGenre(seriesPage, genreId)
+             .then(serieGenreRes => {
+                 ui.printSeriesByGenres(serieGenreRes);
+                 //console.log(serieGenreRes);
+             })
+             .catch(err => console.log(err));
+ 
+     }
 
 };
+
 
 
 
