@@ -222,7 +222,6 @@ class UI {
     // //! MNODAL SECTION
     printModalMovie (searchMovieIdRes) {
         
-        //console.log(searchMovieIdRes);
         //prevent scrolling under the modal
         document.querySelector('body').style.overflow = 'hidden';
     
@@ -306,10 +305,10 @@ class UI {
                             
                             ${searchMovieIdRes.movieDetailsInfo.similar.results < 1 ? '' : `
                             <div class="mx-auto col-md-1">
-                                <button type="button" class="btn btn-outline-light similar-btn" onclick="ui.openSimilar()"> Similar</button> 
+                                <button type="button" class="btn btn-light similar-btn" onclick="ui.openSimilar()"> Similar</button> 
                             </div>
                             <div class="container-fluid carousel-container">
-                                <div class="print-slick" onclick="printSimilar(${window.event})"></div>
+                                <div class="print-slick" onclick="printSimilar(event)"></div>
                             </div>`}
                     </div>
                 `;
@@ -324,7 +323,7 @@ class UI {
     }
 
     printModalSerie (searchSerieIdRes) {
-        //console.log(searchSerieIdRes);
+       
         //prevent scrolling under the modal
         document.querySelector('body').style.overflow = 'hidden';
 
@@ -404,9 +403,9 @@ class UI {
                 
                 ${searchSerieIdRes.similar.results < 1 ? '' : `
                     <div class="mx-auto col-md-1">
-                        <button type="button" class="btn btn-outline-light similar-btn" onclick="ui.openSimilar()"> Similar</button> 
+                        <button type="button" class="btn btn-light similar-btn" onclick="ui.openSimilar()"> Similar</button> 
                     </div>
-                    <div class="container-fluid carousel-container" onclick="printSimilar(${window.event})">
+                    <div class="container-fluid carousel-container" onclick="printSimilar(event)">
                         <div class="print-slick"></div>
                     </div>`}
             </div>
@@ -423,7 +422,7 @@ class UI {
 
     //! SIMILAR 
     printSimilarMovies (searchMovieIdRes) {
-       
+
         let poster = '';
         searchMovieIdRes.movieDetailsInfo.similar.results.forEach( movie => {
             poster += `

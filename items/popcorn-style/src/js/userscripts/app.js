@@ -1,3 +1,19 @@
+//! mouse hack for cross btowser compatibility of event 
+ 
+function fixupMouse( event ) {
+  event = event || window.event;
+  var e = { event: event,
+      target: event.target ? event.target : event.srcElement,
+      which: event.which ? event.which :
+          event.button === 1 ? 1 :
+          event.button === 2 ? 3 : 
+          event.button === 4 ? 2 : 1,
+      x: event.x ? event.x : event.clientX,
+      y: event.y ? event.y : event.clientY
+  };
+  return e;
+  }
+
 
 //! OBJECT INITIALIZERS
 // init movie object from class
@@ -94,10 +110,13 @@ document.getElementById('series').addEventListener('click', () => {
 
 
 
-
 //! OPEN CLOSE MODAL 
 // event listener modal 
-document.querySelector('.grid').addEventListener('click', (e) => {
+document.querySelector('.grid').addEventListener('click', openModal);
+
+function openModal (event) {
+    
+    var e = fixupMouse( event );
     
     if (e.target.dataset.id === 'movie') {
         const clickId = e.target.id;  //! if its a movie
@@ -126,16 +145,13 @@ document.querySelector('.grid').addEventListener('click', (e) => {
 
             
     }
-})
+}
 
 //! GO TO SIMILAR
-function printSimilar(e) { 
+function printSimilar(event) { 
 
-    //var targ;
-	if (!e) var e = window.event;
-    //if (e.target) targ = e.target;
-    
-    
+    var e = fixupMouse( event );
+
     if (e.target.dataset.id === 'movie') {
         const clickId = e.target.id;  //! if its a movie
 
@@ -258,7 +274,7 @@ function loadMore () {
 
     moviesPage++;
     getMovies(moviesPage); 
-    //printByGenre(moviesPage);
+    //printByGenre(event, moviesPage);
     
     
   } else if (document.querySelector('#series.active-link')) {
@@ -277,6 +293,7 @@ document.querySelector('.dropdown-menu').addEventListener('click', printByGenre)
 
 function printByGenre (e) {
    
+    
 
      // clean dom from previous movies
      document.querySelector('.grid').innerHTML = '';
@@ -291,7 +308,7 @@ function printByGenre (e) {
      // on click of each sent data to api call
      if (document.querySelector('#movies.active-link')) {  //! movies genres
          
-         movie.movieGenre(moviesPage, genreId)
+         movie.movieGenre(genreId, moviesPage)
              .then(movieGenreRes => {
                  ui.printMovieByGenre(movieGenreRes);
                  //console.log(movieGenreRes);
@@ -300,7 +317,7 @@ function printByGenre (e) {
  
      } else if (document.querySelector('#series.active-link')) { //! series genres
         
-         movie.serieGenre(seriesPage, genreId)
+         movie.serieGenre(genreId, seriesPage)
              .then(serieGenreRes => {
                  ui.printSeriesByGenres(serieGenreRes);
                  //console.log(serieGenreRes);
