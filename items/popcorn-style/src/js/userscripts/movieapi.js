@@ -41,7 +41,7 @@ class Movie {
 
     //! GET MOVIE AND SERIES AND CREDITS BY ID  <<<< MODAL >>>>>
     async searchMovieId (clickId) {
-        const movieDetailsRes = await fetch(`https://api.themoviedb.org/3/movie/${clickId}?api_key=${this.apikey}&language=en-US&append_to_response=videos`);
+        const movieDetailsRes = await fetch(`https://api.themoviedb.org/3/movie/${clickId}?api_key=${this.apikey}&language=en-US&append_to_response=videos,similar`);
 
         const movieCastRes = await fetch(`https://api.themoviedb.org/3/movie/${clickId}/credits?api_key=${this.apikey}&language=en-US`);
 

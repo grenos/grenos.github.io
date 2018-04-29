@@ -11,6 +11,10 @@ p{
   font-family: 'Muli', sans-serif;
 }
 
+.btn:focus,.btn:active {
+  outline: none !important;
+  box-shadow: none;
+}
 ::-webkit-scrollbar {
   display: none;
 }
@@ -87,7 +91,7 @@ p{
 
 // masonry  // todo nest everything inside SCSS style
 .grid{
-  margin-top: 85px;
+  margin-top: 56px;
 }
 
 
@@ -252,6 +256,10 @@ p{
       color: #274046;
       transition: .1s;
     }
+    .overview{
+      max-height: 150px;
+      overflow: scroll;
+    }
     h2{
       color: white;
       font-size: 3.2rem;
@@ -307,7 +315,7 @@ p{
       .genres{
         padding-top: 5px;
       }
-      button{
+      .trailer-btn{
         position: fixed;
         bottom: 3%;
         right: 3%;
@@ -332,6 +340,31 @@ p{
       height: 100%;
       display: block;
     }
+    .similar-btn{
+      position: fixed;
+      bottom: 3%;
+      border-radius: 0;
+      transition: ease-in-out 0.4s;
+    }
+    .carousel-container{
+      position: absolute;
+      bottom: -50%;
+      background-color: rgba(0, 0, 0, .9);
+      padding: 10px 40px 5px 5px;
+      transition: ease-in-out 0.3s;
+        .slick-item:hover{
+          cursor: pointer;
+          filter: brightness(.6);
+        }
+    }
+}
+
+.sm-btn-active{
+  bottom: 40% !important;
+}
+
+.car-cont-active{
+  bottom: 0 !important;
 }
 
 .no-movie-found h2{
@@ -346,16 +379,16 @@ p{
 }
 
 // /*/////////////////////////////*/
-@-webkit-keyframes modalopen{
-  from{opacity: 0}
-  to{opacity: 1}
-}
 
 @keyframes modalopen{
   from{opacity: 0}
   to{opacity: 1}
 }
 
+@keyframes zoomIn{
+  from{transform: scale(.5)}
+  to{transform: scale(1)}
+}
 
 
 

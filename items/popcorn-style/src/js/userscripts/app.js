@@ -12,6 +12,16 @@ function loadYTplayer() {
     player = new YT.Player('trailer-player');
 }
 
+//init Slick Carousel Plugin
+function slickReady(){
+
+    $('.print-slick').slick({
+        infinite: true,
+        slidesToShow: 7,
+        slidesToScroll: 7,
+        arrows: true,
+    });
+}
 
 
 //! ON LOAD GET RESULTS
@@ -88,6 +98,7 @@ document.getElementById('series').addEventListener('click', () => {
 //! OPEN CLOSE MODAL 
 // event listener modal 
 document.querySelector('.grid').addEventListener('click', (e) => {
+    
     if (e.target.dataset.id === 'movie') {
         const clickId = e.target.id;  //! if its a movie
 
@@ -95,21 +106,65 @@ document.querySelector('.grid').addEventListener('click', (e) => {
         movie.searchMovieId(clickId)
             .then(searchMovieIdRes => {
                 ui.printModalMovie(searchMovieIdRes);
+                ui.printSimilarMovies(searchMovieIdRes);
+                slickReady()
             })
             .catch(err => console.log(err));
 
 
     } else if (e.target.dataset.id === 'serie') {  //! if its a series 
         const clickId = e.target.id;
-
+        
         // serie details FULL
         movie.searchSerieId(clickId)
             .then(searchSerieIdRes => {
                 ui.printModalSerie(searchSerieIdRes);
+                ui.printSimilarSeries(searchSerieIdRes);
+                slickReady()
             })
             .catch(err => console.log(err));
+
+            
     }
 })
+
+//! GO TO SIMILAR
+function printSimilar(e) { 
+
+    //var targ;
+	if (!e) var e = window.event;
+    //if (e.target) targ = e.target;
+    
+    
+    if (e.target.dataset.id === 'movie') {
+        const clickId = e.target.id;  //! if its a movie
+
+        // movie details and cast by id
+        movie.searchMovieId(clickId)
+            .then(searchMovieIdRes => {
+                ui.printModalMovie(searchMovieIdRes);
+                ui.printSimilarMovies(searchMovieIdRes);
+                slickReady()
+            })
+            .catch(err => console.log(err));
+
+
+    } else if (e.target.dataset.id === 'serie') {  //! if its a series 
+        const clickId = e.target.id;
+       
+        // serie details FULL
+        movie.searchSerieId(clickId)
+            .then(searchSerieIdRes => {
+                ui.printModalSerie(searchSerieIdRes);
+                ui.printSimilarSeries(searchSerieIdRes);
+                slickReady()
+            })
+            .catch(err => console.log(err));
+            
+    }
+
+}
+
 
 // delete modal //* evt lstnr on html
 function closeModal() {
@@ -126,7 +181,6 @@ function openVideo() {
     player.playVideo();
    
 }
-
 
 
 
@@ -199,10 +253,13 @@ document.getElementById('load-more').addEventListener('click', loadMore)
     
 function loadMore () {
 
+ 
   if (document.querySelector('#movies.active-link')) {
 
     moviesPage++;
     getMovies(moviesPage); 
+    //printByGenre(moviesPage);
+    
     
   } else if (document.querySelector('#series.active-link')) {
 
@@ -214,13 +271,12 @@ function loadMore () {
 }
 
 
-
-// * NEEDS REFACTORING
 //! PRINT BY GENRE
 // get access to genre list on nav 
 document.querySelector('.dropdown-menu').addEventListener('click', printByGenre);
 
 function printByGenre (e) {
+   
 
      // clean dom from previous movies
      document.querySelector('.grid').innerHTML = '';
@@ -254,6 +310,7 @@ function printByGenre (e) {
      }
 
 };
+
 
 
 
