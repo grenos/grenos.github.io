@@ -292,8 +292,6 @@ function loadMore () {
 document.querySelector('.dropdown-menu').addEventListener('click', printByGenre);
 
 function printByGenre (e) {
-   
-    
 
      // clean dom from previous movies
      document.querySelector('.grid').innerHTML = '';
@@ -308,7 +306,7 @@ function printByGenre (e) {
      // on click of each sent data to api call
      if (document.querySelector('#movies.active-link')) {  //! movies genres
          
-         movie.movieGenre(genreId, moviesPage)
+         movie.movieGenre(moviesPage, genreId)
              .then(movieGenreRes => {
                  ui.printMovieByGenre(movieGenreRes);
                  //console.log(movieGenreRes);
@@ -317,7 +315,7 @@ function printByGenre (e) {
  
      } else if (document.querySelector('#series.active-link')) { //! series genres
         
-         movie.serieGenre(genreId, seriesPage)
+         movie.serieGenre(seriesPage, genreId)
              .then(serieGenreRes => {
                  ui.printSeriesByGenres(serieGenreRes);
                  //console.log(serieGenreRes);
