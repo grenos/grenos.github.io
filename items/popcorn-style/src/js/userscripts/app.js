@@ -28,7 +28,7 @@ function loadYTplayer() {
     player = new YT.Player('trailer-player');
 }
 
-//init Slick Carousel Plugin
+//init Slick Carousel Plugin //! make responsive
 function slickReady(){
 
     $('.print-slick').slick({
@@ -66,7 +66,7 @@ function getSeries(page) {
         .catch(err => console.log(err));
 }
 
-//get genres -- called from navbar listener also
+//get genres -- called on document load
 function getGenres() {
     
     // on load call the api  -- get genres list send them to ui
@@ -92,21 +92,34 @@ function getGenres() {
 
 // event listener movies link Navbar
 document.getElementById('movies').addEventListener('click', () => {
+    // clear dom from previews appended results
+    document.querySelector('.grid').innerHTML = '';
     // call function
     getMovies();
     // clear search input if it has letters inside
     ui.clearInput();
-    // clear dom from previews appended results
-    document.querySelector('.grid').innerHTML = '';
 });
 
 //event listener series link Navbar
 document.getElementById('series').addEventListener('click', () => {
-    getSeries();
-    ui.clearInput();
     document.querySelector('.grid').innerHTML = '';
+    getSeries();
+    ui.clearInput();    
 });
 
+
+
+//! NAVBAR AND PAGINATION 
+// Evt Listener for nav active link
+document.querySelector('.navbar-nav').addEventListener('click', (e) => {
+    // first reset counters
+    moviesPage = 1;
+    seriesPage = 1; 
+    //then set active link
+    ui.activeLink(e);
+    //call genre function
+    //getGenres(); 
+});
 
 
 
@@ -204,8 +217,8 @@ function openVideo() {
 // event listener search
 document.getElementById('inlineFormInputGroup').addEventListener('keyup', (e) => {
 
-    const userText = document.getElementById('inlineFormInputGroup').value;
-
+    const userText = document.getElementById('inlineFormInputGroup').value;  
+    
     // search only if there are atleast 3 letters
     if(userText.length >= 3) {
 
@@ -228,9 +241,14 @@ document.getElementById('inlineFormInputGroup').addEventListener('keyup', (e) =>
     
     // if less than 1 letter on search input
     if (userText.length < 1 ) {
+        //load movies
         getMovies();
-        // load more button shows up again
-        document.getElementById('load-more').style.visibility = 'visible';
+        // reset counters
+        moviesPage = 1;
+        seriesPage = 1; 
+        // set active link to movies if its not there
+        document.getElementById('series').classList.remove('active-link');
+        document.getElementById('movies').classList.add('active-link');
         // clear dom from previous movies
         document.querySelector('.grid').innerHTML = '';
     }
@@ -243,53 +261,37 @@ document.getElementById('inlineFormInputGroup').addEventListener('keyup', (e) =>
 
 
 
-//! NAVBAR ADN PAGINATION 
-// Evt Listener for nav active link
-document.querySelector('.navbar-nav').addEventListener('click', (e) => {
-
-    // first reset counters
-    moviesPage = 1;
-    seriesPage = 1; 
-    //then set active link
-    ui.activeLink(e);
-    //call genre function
-    //getGenres(); 
-    //set button to show if its hidden from searhc results
-    document.getElementById('load-more').style.visibility = 'visible';
-});
-
-
-
-//! LOAD MORE BUTTON
+//! LOAD MORE LISTENER
 // globals for counter
 let moviesPage = 1;
 let seriesPage = 1;
 
-document.getElementById('load-more').addEventListener('click', loadMore)
-    
-function loadMore () {
-
- 
-  if (document.querySelector('#movies.active-link')) {
-
-    moviesPage++;
-    getMovies(moviesPage); 
-    //printByGenre(event, moviesPage);
-    
-    
-  } else if (document.querySelector('#series.active-link')) {
-
-    seriesPage++;
-    getSeries(seriesPage);
-
-  }
-  
-}
+window.addEventListener('scroll', loadMore);
+function loadMore (e) {
+    // define input const
+    const userText = document.getElementById('inlineFormInputGroup').value;  
+    // if bottom of page
+    if ((window.innerHeight + window.scrollY) == document.body.offsetHeight) {
+        
+        if (document.querySelector('#movies.active-link') && !userText) {
+            moviesPage++;
+            getMovies(moviesPage); 
+            //printByGenre(moviesPage);
+          } else if (document.querySelector('#series.active-link') && !userText) {
+            seriesPage++;
+            getSeries(seriesPage);  
+            
+            // if on search mode dont load more 
+          }  else if (userText) {
+            console.log('No more Suggestions.');
+          }
+    }
+};
 
 
 //! PRINT BY GENRE
 // get access to genre list on nav 
-document.querySelector('.dropdown-menu').addEventListener('click', printByGenre);
+ document.querySelector('.dropdown-menu').addEventListener('click', printByGenre);
 
 function printByGenre (e) {
 
@@ -297,8 +299,6 @@ function printByGenre (e) {
      document.querySelector('.grid').innerHTML = '';
      // clean search input
      ui.clearInput();
-     //show load more button if coming from search
-     document.getElementById('load-more').style.visibility = 'visible';
      // fetch the data-genre of each link
      const genreId = e.target.dataset.genre;
  
@@ -309,7 +309,7 @@ function printByGenre (e) {
          movie.movieGenre(moviesPage, genreId)
              .then(movieGenreRes => {
                  ui.printMovieByGenre(movieGenreRes);
-                 //console.log(movieGenreRes);
+                 console.log(movieGenreRes);
              })
              .catch(err => console.log(err));
  

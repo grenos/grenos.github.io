@@ -196,10 +196,10 @@ p{
 
     .fa-times-circle{
       color: white;
-      font-size: 2.5rem;
+      font-size: 2rem;
       position: fixed;
-      top: 2.5%;
-      left: 1%;
+      top: 2%;
+      left: .8%;
       transition: .1s;
       cursor: pointer;
       z-index: inherit;
@@ -355,6 +355,9 @@ p{
         .slick-item:hover{
           cursor: pointer;
           filter: brightness(.6);
+        }
+        .slick-item img{
+          max-height: 231px;
         }
     }
 }

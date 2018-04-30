@@ -215,7 +215,7 @@ class UI {
                 });   
                 
                 // remove load more button on search results
-                document.getElementById('load-more').style.visibility = 'hidden';
+                //document.getElementById('load-more').style.visibility = 'hidden';
     }
 
     

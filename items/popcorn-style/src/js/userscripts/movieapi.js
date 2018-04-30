@@ -1,7 +1,6 @@
 class Movie {
     constructor(page) {
         this.apikey = 'fdde855cd4b047fb1a0ea24a7ec58362';
-        //this.page = 1;
     }
    
 

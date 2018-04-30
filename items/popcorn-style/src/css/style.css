@@ -165,10 +165,10 @@ p {
   z-index: 1050; }
   .myModal .fa-times-circle {
     color: white;
-    font-size: 2.5rem;
+    font-size: 2rem;
     position: fixed;
-    top: 2.5%;
-    left: 1%;
+    top: 2%;
+    left: .8%;
     -webkit-transition: .1s;
     transition: .1s;
     cursor: pointer;
@@ -314,6 +314,8 @@ p {
       cursor: pointer;
       -webkit-filter: brightness(0.6);
               filter: brightness(0.6); }
+    .myModal .carousel-container .slick-item img {
+      max-height: 231px; }
 
 .sm-btn-active {
   bottom: 40% !important; }
