@@ -268,6 +268,7 @@ let seriesPage = 1;
 
 window.addEventListener('scroll', loadMore);
 function loadMore (e) {
+
     // define input const
     const userText = document.getElementById('inlineFormInputGroup').value;  
     // if bottom of page
@@ -321,8 +322,7 @@ function printByGenre (e) {
                  //console.log(serieGenreRes);
              })
              .catch(err => console.log(err));
- 
-     }
+     } 
 
 };
 

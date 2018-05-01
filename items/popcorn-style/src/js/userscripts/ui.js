@@ -39,7 +39,7 @@ class UI {
                 output = `
                         <div class="grid-item col-md-2">
                             <div class="grid-item-content">
-                                <img src="http://image.tmdb.org/t/p/w500/${img}">
+                                <img src="https://image.tmdb.org/t/p/w500/${img}">
                                 <div id="${id}" class="overlay" data-id="movie"></div>
                                 <div class="gall-text text-center">
                                     <h4 id="${id}" class="content-title" data-id="movie">${title}</h4>
@@ -92,7 +92,7 @@ class UI {
                 output = `
                     <div class="grid-item col-md-2">
                         <div class="grid-item-content">
-                            <img src="http://image.tmdb.org/t/p/w500/${img}">
+                            <img src="https://image.tmdb.org/t/p/w500/${img}">
                             <div id="${id}" class="overlay" data-id="serie"></div>
                                 <div class="gall-text">
                                     <h4 id="${id}" class="content-title" data-id="serie">${name}</h4>
@@ -148,7 +148,7 @@ class UI {
                 output += `
                     <div class="grid-item col-md-2">
                         <div class="grid-item-content">
-                            <img src="http://image.tmdb.org/t/p/w500/${img}">
+                            <img src="https://image.tmdb.org/t/p/w500/${img}">
                             <div id="${id}" class="overlay" data-id="movie"></div>
                                 <div class="gall-text">
                                     <h4 id="${id}" class="content-title" data-id="movie">${title}</h4>
@@ -198,7 +198,7 @@ class UI {
                     output += `
                     <div class="grid-item col-md-2">
                             <div class="grid-item-content">
-                                <img src="http://image.tmdb.org/t/p/w500/${img}">
+                                <img src="https://image.tmdb.org/t/p/w500/${img}">
                                 <div id="${id}" class="overlay" data-id="serie"></div>
                                     <div class="gall-text">
                                         <h4 id="${id}" class="content-title" data-id="serie">${name}</h4>
@@ -316,7 +316,7 @@ class UI {
                 
                 // set background in CSS
                 const modalBg = document.querySelector('.myModal');
-                modalBg.style.backgroundImage = `linear-gradient(45deg, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 15%,rgba(255,255,255,.15) 15%,rgba(0,0,0,0) 40%,rgba(0,0,0,0.75) 40%,rgba(0,0,0,0.75) 100%), url(http://image.tmdb.org/t/p/w1280/${bDrop})`; 
+                modalBg.style.backgroundImage = `linear-gradient(45deg, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 15%,rgba(255,255,255,.15) 15%,rgba(0,0,0,0) 40%,rgba(0,0,0,0.75) 40%,rgba(0,0,0,0.75) 100%), url(https://image.tmdb.org/t/p/w1280/${bDrop})`; 
 
                 // Tell youtube API to load player
                 loadYTplayer();
@@ -414,7 +414,7 @@ class UI {
 
         // set background in CSS
         const modalBgS = document.querySelector('.myModal');
-        modalBgS.style.backgroundImage = `linear-gradient(45deg, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 15%,rgba(255,255,255,.15) 15%,rgba(0,0,0,0) 40%,rgba(0,0,0,0.75) 40%,rgba(0,0,0,0.75) 100%), url(http://image.tmdb.org/t/p/w1280/${bDrop})`;
+        modalBgS.style.backgroundImage = `linear-gradient(45deg, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 15%,rgba(255,255,255,.15) 15%,rgba(0,0,0,0) 40%,rgba(0,0,0,0.75) 40%,rgba(0,0,0,0.75) 100%), url(https://image.tmdb.org/t/p/w1280/${bDrop})`;
 
         // Tell youtube API to load player
         loadYTplayer();
@@ -427,7 +427,7 @@ class UI {
         searchMovieIdRes.movieDetailsInfo.similar.results.forEach( movie => {
             poster += `
                 <div class="slick-item">
-                    <img src="http://image.tmdb.org/t/p/w154/${movie.poster_path}"  id="${movie.id}" data-id="movie" alt="Similar">
+                    <img src="https://image.tmdb.org/t/p/w154/${movie.poster_path}"  id="${movie.id}" data-id="movie" alt="Similar">
                 </div>
             `;
         }) 
@@ -442,7 +442,7 @@ class UI {
         searchSerieIdRes.similar.results.forEach( serie => {
             poster += `
                 <div class="slick-item">
-                    <img src="http://image.tmdb.org/t/p/w154/${serie.poster_path}"  id="${serie.id}" data-id="serie" alt="Similar">
+                    <img src="https://image.tmdb.org/t/p/w154/${serie.poster_path}"  id="${serie.id}" data-id="serie" alt="Similar">
                 </div>
             `;
         })
@@ -588,7 +588,7 @@ class UI {
                 output = `
                         <div class="grid-item col-md-2">
                             <div class="grid-item-content">
-                                <img src="http://image.tmdb.org/t/p/w500/${img}">
+                                <img src="https://image.tmdb.org/t/p/w500/${img}">
                                 <div id="${id}" class="overlay" data-id="movie"></div>
                                 <div class="gall-text text-center">
                                     <h4 id="${id}" class="content-title" data-id="movie">${title}</h4>
@@ -638,7 +638,7 @@ class UI {
                 output = `
                     <div class="grid-item col-md-2" id="genre">
                         <div class="grid-item-content">
-                            <img src="http://image.tmdb.org/t/p/w500/${img}">
+                            <img src="https://image.tmdb.org/t/p/w500/${img}">
                             <div id="${id}" class="overlay" data-id="serie"></div>
                                 <div class="gall-text">
                                     <h4 id="${id}" class="content-title" data-id="serie">${name}</h4>
