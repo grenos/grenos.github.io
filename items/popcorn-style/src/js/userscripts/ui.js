@@ -769,7 +769,7 @@ class UI {
         if (pic) {
             actorBgS.style.backgroundImage = `linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 21%,rgba(0,0,0,1) 40%,rgba(0,0,0,1) 100%), url(https://image.tmdb.org/t/p/w500/${pic})`;
         } else {
-            actorBgS.style.backgroundImage = `linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 21%,rgba(0,0,0,1) 40%,rgba(0,0,0,1) 100%), url(/assets/media/images/popcorn.png)`;
+            actorBgS.style.backgroundImage = `linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 21%,rgba(0,0,0,1) 40%,rgba(0,0,0,1) 100%), url(assets/media/images/popcorn.png)`;
         };
     
     }
