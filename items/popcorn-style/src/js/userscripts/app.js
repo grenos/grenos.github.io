@@ -1,5 +1,4 @@
 //! mouse hack for cross btowser compatibility of event 
- 
 function fixupMouse( event ) {
   event = event || window.event;
   var e = { event: event,
@@ -159,6 +158,40 @@ function openModal (event) {
             
     }
 }
+
+
+
+//! GET ACTORS
+
+function printActor (event) {
+    var e = fixupMouse( event );
+
+    const actorId = e.target.dataset.actor;
+    
+    movie.getActors(actorId)
+        .then(getActorRes => {
+            ui.printActor(getActorRes);
+        })
+        .catch(err => console.log(err));
+}
+
+//! EXPAND ACTOR BIO
+function expand(){
+    const bio = document.querySelector('.bio');
+    const style = window.getComputedStyle(bio);
+    const bioSize = style.getPropertyValue('max-height');
+
+    if (bioSize == '50px') {
+        bio.style.maxHeight = '300px';
+        document.querySelector('.expand-btn').innerHTML = 'Close';
+    } else {
+        bio.style.maxHeight = '50px';
+        document.querySelector('.expand-btn').innerHTML = 'Open';
+    }
+    
+}
+
+
 
 //! GO TO SIMILAR
 function printSimilar(event) { 

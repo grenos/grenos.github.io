@@ -97,8 +97,19 @@ class Movie {
         return serieGenreInfo;
     }
 
+
+
+    //! ACTOR DETAILS
+    async getActors (actorId) {
+
+        const getActorsRes = await fetch(`https://api.themoviedb.org/3/person/${actorId}?api_key=fdde855cd4b047fb1a0ea24a7ec58362&language=en-US&append_to_response=combined_credits,external_ids,images`);
+
+        const getActorsInfo = await getActorsRes.json();
+        return getActorsInfo;
+
+    }
+
     
 }
-
 
 

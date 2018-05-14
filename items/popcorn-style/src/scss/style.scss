@@ -193,7 +193,6 @@ p{
   left: 0;
   z-index: 1050;
   
-
     .fa-times-circle{
       color: white;
       font-size: 2rem;
@@ -289,6 +288,13 @@ p{
           color: #ff5252;
         }
     }
+    .actor{
+      color: white;
+    }
+    .actor:hover{
+      text-decoration: none;
+      color: #ff5252;
+    }
     ul{
       padding-top: 0px;
         .title{
@@ -379,6 +385,105 @@ p{
 .no-movie-found img{
   width:30%;
   height:auto;
+}
+
+
+.actorModal{ 
+  animation-name: modalopen;
+  animation-duration: 1s;
+  padding-bottom: 30px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1051;
+  background-repeat: no-repeat;
+  background-position: left; 
+  overflow: scroll;
+
+    .fa-times-circle{
+      color: white;
+      font-size: 2rem;
+      position: fixed;
+      top: 2%;
+      left: .8%;
+      transition: .1s;
+      cursor: pointer;
+      z-index: inherit;
+    }
+    .fa-times-circle:hover{
+      transition: .1s;
+      color: #ff5252;
+    }
+    h2{
+      color: white;
+      font-size: 3.2rem;
+      letter-spacing: 2px;
+      line-height: 4.5rem;  
+      text-align: right;
+    }
+    h4{
+      text-align: right;
+      font-size: 1rem;     
+      color: #b9b9b9;
+      line-height: 0;
+      padding: 10px 0 40px 0; 
+        span{
+          padding: 0 5px;
+          color: #ff5252;
+        }
+    }
+
+    .bio{
+      color: white;
+      max-height: 50px;
+      overflow: scroll;
+      text-align: justify;
+      margin-bottom: 0;
+      border-bottom: 1px solid rgba(255, 82, 82, .5);
+        span{
+          font-size: 1.1rem;
+          font-family: 'Titillium Web', sans-serif;
+          color: #ff5252;
+        }
+    }
+    .expand-btn{
+      background: transparent;
+      border: none;
+      color: white;
+      padding-left: 0;
+      padding-bottom: 50px;
+      font-family: 'Titillium Web', sans-serif;
+      font-weight: 100;
+      
+    }
+    .expand-btn:hover{
+      color: #ff5252;
+      cursor: pointer;
+    }
+    .list-group{
+      padding-bottom: 50px;
+    }
+    h3{
+      color: white;
+      font-weight: 100;
+    }
+    .list-group-item{
+      background-color: transparent;
+      border-bottom: 1px solid white;
+      color: white;
+      display: block;
+    }
+    .cr-title{
+      color: #ff5252;
+    }
+    .role{
+      color: #e0e0e0;
+      font-style: italic;
+      font-size: .8rem;
+    }
+
 }
 
 // /*/////////////////////////////*/

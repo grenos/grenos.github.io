@@ -214,8 +214,6 @@ class UI {
 
                 });   
                 
-                // remove load more button on search results
-                //document.getElementById('load-more').style.visibility = 'hidden';
     }
 
     
@@ -233,9 +231,12 @@ class UI {
         //loop through the cast and output it as one string 
         let actors = '';
         cast.forEach( cast => {
-             actors += cast.name + ', ';    
-        });
+                actors += `
+                    <a href="#!" class="actor" data-actor="${cast.id}" onclick="printActor(event)">${cast.name}</a>
+                `;
 
+        });
+        
         // loop through the genres and print individualy 
         const getGenre = searchMovieIdRes.movieDetailsInfo.genres;
         let genres = '';
@@ -331,9 +332,12 @@ class UI {
 
         let actors = '';
         cast.forEach( cast => {
-             actors += cast.name + ', ';
-        });
+            actors += `
+            <a href="#!" class="actor" data-actor="${cast.id}" onclick="printActor(event)">${cast.name}</a>
+            `;
 
+        });
+        
         const getCreators = searchSerieIdRes.created_by;
         let creators = '';
         getCreators.forEach( person => {
@@ -457,21 +461,30 @@ class UI {
         document.querySelector('.carousel-container').classList.toggle('car-cont-active');
     }
 
+
+    //! CLOSE MODAL
     clearModal () {
         const modal = document.querySelector('.myModal');
         const video = document.querySelector('.video-container');
+        const actor = document.querySelector('.actorModal');
 
         if (video && video.style.display === 'block') {
             video.style.display = 'none';
             player.stopVideo();
+
+        } else if (actor) {
+            actor.remove();
             
-            
+                
         }  else if (modal) {
             modal.remove();
             //set back to auto
             document.querySelector('body').style.overflow = 'auto';
+
         }
+
     }
+
 
     //! NAVBAR SECTION
     clearInput () {
@@ -626,9 +639,9 @@ class UI {
                 return acc
                 }, { matches: [], rejects: [] })
             
-            
+              
             filteredSeries.matches.forEach( serie => {
-
+                
                 let img = serie.poster_path;
                 const name = serie.name;       
                 const date = serie.first_air_date.substring(0, 4);
@@ -653,7 +666,115 @@ class UI {
                 document.querySelector('.grid').innerHTML += output;   
         });
 
-    }  
+    }
+    
+    
+    //! ACTORS PAGE
+
+    printActor (getActorRes) {
+
+        // discard movies that are not released yet and discard series
+        const filteredCredits = getActorRes.combined_credits.cast.reduce((acc, credit) => {
+
+            if (credit.media_type == 'tv') {
+                acc.series.push(credit)
+                return acc
+            } 
+            acc.movies.push(credit)
+            return acc
+
+            }, { movies: [], series: [] })
+        
+        // print each credit for movie
+        let movieCredit = '';
+        filteredCredits.movies.forEach( credits => {
+
+            const title = credits.title,
+                  year = credits.release_date,
+                  id = credits.id,
+                  role = credits.character;
+
+            const years = (year) ? year.substring(0, 4) : 'n/a';
+            
+            movieCredit += `
+            <li class="list-group-item credit d-flex justify-content-between align-items-center">
+                <span class="cr-title">${title}<br><span class="role">${role}</span></span> 
+                <span class="badge badge-light badge-pill">${years}</span>
+            </li>    
+            `;       
+        })
+
+        // print each credit for serie
+        let serieCredit = '';
+        filteredCredits.series.forEach( credits => {
+
+            const name = credits.name,
+                  date = credits.first_air_date.substring(0, 4),
+                  id = credits.id,
+                  role = credits.character;
+            
+            serieCredit += `
+            <li class="list-group-item credit d-flex justify-content-between align-items-center">
+                <span class="cr-title">${name}<br><span class="role">${role}</span></span> 
+                <span class="badge badge-light badge-pill">${date}</span>
+            </li>    
+            `;       
+        })
+
+        //prevent scrolling under the modal
+        document.querySelector('.modal-container').style.overflow = 'scroll';
+
+        const bio = getActorRes.biography,
+              bDay = getActorRes.birthday,
+              name = getActorRes.name,
+              hTown = getActorRes.place_of_birth,
+              pic = getActorRes.profile_path;
+        
+
+        // reverse date to EU style and check if exists
+        const dob = (bDay) ? bDay.split('-').reverse().join('-') : 'n/a';
+        
+        let output = '';
+
+        output = `
+            <div class="actorModal">
+                <i class="far fa-times-circle" id="close-modal" onclick="closeModal()"></i>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 title">
+                            <h2 class="modal-title">${name} </h2>
+                            <h4><span> DOB: </span>${dob} <span> POB: </span> ${hTown !=undefined ? hTown : 'n/a'}</h4>
+                        </div>
+                        <div class="col-md-6 ml-auto text">
+                            <p class="bio"><span>Overview:</span> ${bio}</p>
+                            <button type="button" class="btn expand-btn" onclick="expand()"> Open</button> 
+                            <h3>Movies</h3>
+                            <ul class="list-group credits">${movieCredit}</ul>
+                            ${filteredCredits.series.length < 1 ? '' : `
+                                <h3>Series</h3>
+                            `} 
+                            <ul class="list-group credits">${serieCredit}</ul>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        `;
+
+         document.querySelector('.actor-modal-container').innerHTML = output; 
+
+          // set background in CSS
+        const actorBgS = document.querySelector('.actorModal');
+
+        // if pic is not present use placeholder
+        if (pic) {
+            actorBgS.style.backgroundImage = `linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 21%,rgba(0,0,0,1) 40%,rgba(0,0,0,1) 100%), url(https://image.tmdb.org/t/p/w500/${pic})`;
+        } else {
+            actorBgS.style.backgroundImage = `linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 21%,rgba(0,0,0,1) 40%,rgba(0,0,0,1) 100%), url(/assets/media/images/popcorn.png)`;
+        };
+    
+    }
+
+
 
 }
 

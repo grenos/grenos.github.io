@@ -253,6 +253,11 @@ p {
       font-size: 1.2rem;
       font-family: 'Titillium Web', sans-serif;
       color: #ff5252; }
+  .myModal .actor {
+    color: white; }
+  .myModal .actor:hover {
+    text-decoration: none;
+    color: #ff5252; }
   .myModal ul {
     padding-top: 0px; }
     .myModal ul .title {
@@ -331,6 +336,89 @@ p {
 .no-movie-found img {
   width: 30%;
   height: auto; }
+
+.actorModal {
+  -webkit-animation-name: modalopen;
+          animation-name: modalopen;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  padding-bottom: 30px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1051;
+  background-repeat: no-repeat;
+  background-position: left;
+  overflow: scroll; }
+  .actorModal .fa-times-circle {
+    color: white;
+    font-size: 2rem;
+    position: fixed;
+    top: 2%;
+    left: .8%;
+    -webkit-transition: .1s;
+    transition: .1s;
+    cursor: pointer;
+    z-index: inherit; }
+  .actorModal .fa-times-circle:hover {
+    -webkit-transition: .1s;
+    transition: .1s;
+    color: #ff5252; }
+  .actorModal h2 {
+    color: white;
+    font-size: 3.2rem;
+    letter-spacing: 2px;
+    line-height: 4.5rem;
+    text-align: right; }
+  .actorModal h4 {
+    text-align: right;
+    font-size: 1rem;
+    color: #b9b9b9;
+    line-height: 0;
+    padding: 10px 0 40px 0; }
+    .actorModal h4 span {
+      padding: 0 5px;
+      color: #ff5252; }
+  .actorModal .bio {
+    color: white;
+    max-height: 50px;
+    overflow: scroll;
+    text-align: justify;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255, 82, 82, 0.5); }
+    .actorModal .bio span {
+      font-size: 1.1rem;
+      font-family: 'Titillium Web', sans-serif;
+      color: #ff5252; }
+  .actorModal .expand-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    padding-left: 0;
+    padding-bottom: 50px;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 100; }
+  .actorModal .expand-btn:hover {
+    color: #ff5252;
+    cursor: pointer; }
+  .actorModal .list-group {
+    padding-bottom: 50px; }
+  .actorModal h3 {
+    color: white;
+    font-weight: 100; }
+  .actorModal .list-group-item {
+    background-color: transparent;
+    border-bottom: 1px solid white;
+    color: white;
+    display: block; }
+  .actorModal .cr-title {
+    color: #ff5252; }
+  .actorModal .role {
+    color: #e0e0e0;
+    font-style: italic;
+    font-size: .8rem; }
 
 @-webkit-keyframes modalopen {
   from {
