@@ -672,8 +672,8 @@ class UI {
     //! ACTORS PAGE
 
     printActor (getActorRes) {
-
-        // discard movies that are not released yet and discard series
+        console.log(getActorRes);
+        // split into movies and series array
         const filteredCredits = getActorRes.combined_credits.cast.reduce((acc, credit) => {
 
             if (credit.media_type == 'tv') {
@@ -694,6 +694,7 @@ class UI {
                   id = credits.id,
                   role = credits.character;
 
+            //if no year n/a also keep only year from date
             const years = (year) ? year.substring(0, 4) : 'n/a';
             
             movieCredit += `
@@ -721,7 +722,7 @@ class UI {
             `;       
         })
 
-        //prevent scrolling under the modal
+        //dont prevent scrolling under the modal
         document.querySelector('.modal-container').style.overflow = 'scroll';
 
         const bio = getActorRes.biography,
@@ -733,19 +734,72 @@ class UI {
 
         // reverse date to EU style and check if exists
         const dob = (bDay) ? bDay.split('-').reverse().join('-') : 'n/a';
+
+
+        //get actor's social links
+        let socials = '';
+        const social = getActorRes.external_ids;
+        const socialLinks = [];
+        socialLinks.push(social);
+        
+        socialLinks.forEach ( link => {
+
+            let fb = link.facebook_id;
+            let insta = link.instagram_id;
+            let twit = link.twitter_id;
+            let imdb = link.imdb_id;
+
+            socials +=`
+                ${fb ? `<a target="_blank" href="https://www.facebook.com/${fb}"><i class="fab fa-facebook-square"></i></a>` : ''}
+                ${insta ? `<a target="_blank" href="https://www.instagram.com/${insta}"><i class="fab fa-instagram"></i></a>` : ''}
+                ${twit ? `<a target="_blank" href="https://twitter.com/${twit}"> <i class="fab fa-twitter-square"></i></a>` : ''}
+                ${imdb ? `<a target="_blank" href="https://www.imdb.com/name/${imdb}"><i class="fab fa-imdb"></i></a>` : ''}
+            `;
+
+        })
+
+
+        // get actor's gallery pictures
+        let pictures = '';
+        const gallery = getActorRes.images.profiles;
+        gallery.forEach( picture => {
+            
+            const pics = picture.file_path;
+            pictures += `
+                <div class="col-lg-2 foto-gall">
+                    <a class="popup-pic" href="https://image.tmdb.org/t/p/w780/${pics}">
+                        <img class="gallery-actor" src="https://image.tmdb.org/t/p/w342/${pics}">
+                    </a>
+                </div>
+            `;
+        })
+
+        //pic and placeholder html for ternery 
+        let actorPic = `<img class="main-pic" src="https://image.tmdb.org/t/p/w780/${pic}">`;
+        let placeHold = `<img class="main-pic" src="assets/media/images/popcorn.png">`
         
         let output = '';
 
         output = `
             <div class="actorModal">
                 <i class="far fa-times-circle" id="close-modal" onclick="closeModal()"></i>
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12 title">
                             <h2 class="modal-title">${name} </h2>
                             <h4><span> DOB: </span>${dob} <span> POB: </span> ${hTown !=undefined ? hTown : 'n/a'}</h4>
                         </div>
-                        <div class="col-md-6 ml-auto text">
+                        <div class="col-md-6 actor-pic">
+                            ${pic ? actorPic : placeHold} 
+                            <div class="social-icons">
+                                ${socials}
+                            </div>
+                                <h3>Gallery</h3>
+                                <div class="row gallery-main">
+                                    ${pictures}
+                                </div>
+                        </div>
+                        <div class="col-md-6 text">
                             <p class="bio"><span>Overview:</span> ${bio}</p>
                             <button type="button" class="btn expand-btn" onclick="expand()"> Open</button> 
                             <h3>Movies</h3>
@@ -754,7 +808,7 @@ class UI {
                                 <h3>Series</h3>
                             `} 
                             <ul class="list-group credits">${serieCredit}</ul>
-                        </div>  
+                        </div>
                     </div>
                 </div>
             </div>
@@ -766,11 +820,11 @@ class UI {
         const actorBgS = document.querySelector('.actorModal');
 
         // if pic is not present use placeholder
-        if (pic) {
-            actorBgS.style.backgroundImage = `linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 21%,rgba(0,0,0,1) 40%,rgba(0,0,0,1) 100%), url(https://image.tmdb.org/t/p/w500/${pic})`;
-        } else {
-            actorBgS.style.backgroundImage = `linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 21%,rgba(0,0,0,1) 40%,rgba(0,0,0,1) 100%), url(assets/media/images/popcorn.png)`;
-        };
+        // if (pic) {
+        //     actorBgS.style.backgroundImage = `linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 21%,rgba(0,0,0,1) 40%,rgba(0,0,0,1) 100%), url(https://image.tmdb.org/t/p/w780/${pic})`;
+        // } else {
+        //     actorBgS.style.backgroundImage = `linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 21%,rgba(0,0,0,1) 40%,rgba(0,0,0,1) 100%), url(/assets/media/images/popcorn.png)`;
+        // };
     
     }
 

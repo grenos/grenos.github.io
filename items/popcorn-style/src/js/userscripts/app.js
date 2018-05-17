@@ -38,6 +38,20 @@ function slickReady(){
     });
 }
 
+// init magnific popup plugin
+function popupReady(){
+
+    $('.popup-pic').magnificPopup({
+        type: 'image',
+        showCloseBtn: false,
+        gallery: {
+            enabled: true,
+        } 
+      });
+
+}
+
+
 
 //! ON LOAD GET RESULTS
 //get movies and genres on DOM load
@@ -49,7 +63,6 @@ function getMovies(page) {
     movie.topMovies(page)
         .then(topMoviesRes => {
             ui.printMovies(topMoviesRes);
-            //console.log(topMoviesRes);
         })
         .catch(err => console.log(err));
 }
@@ -171,6 +184,7 @@ function printActor (event) {
     movie.getActors(actorId)
         .then(getActorRes => {
             ui.printActor(getActorRes);
+            popupReady();
         })
         .catch(err => console.log(err));
 }

@@ -349,8 +349,7 @@ p {
   bottom: 0;
   left: 0;
   z-index: 1051;
-  background-repeat: no-repeat;
-  background-position: left;
+  background-color: black;
   overflow: scroll; }
   .actorModal .fa-times-circle {
     color: white;
@@ -381,6 +380,30 @@ p {
     .actorModal h4 span {
       padding: 0 5px;
       color: #ff5252; }
+  .actorModal .actor-pic .main-pic {
+    width: 100%;
+    padding: 0 50px 0 50px; }
+  .actorModal .actor-pic .social-icons {
+    padding-left: 45px; }
+  .actorModal .actor-pic i {
+    font-size: 3rem;
+    color: white;
+    padding: 15px 5px 25px 5px; }
+  .actorModal .actor-pic h3 {
+    padding-top: 100px;
+    padding-left: 50px; }
+  .actorModal .actor-pic .gallery-main {
+    padding: 15px 65px 0 65px; }
+  .actorModal .actor-pic .foto-gall {
+    padding: 1px;
+    -webkit-filter: brightness(1);
+            filter: brightness(1); }
+  .actorModal .actor-pic .foto-gall:hover {
+    -webkit-filter: brightness(0.7);
+            filter: brightness(0.7);
+    cursor: pointer; }
+  .actorModal .actor-pic .gallery-actor {
+    width: 100%; }
   .actorModal .bio {
     color: white;
     max-height: 50px;

@@ -398,8 +398,7 @@ p{
   bottom: 0;
   left: 0;
   z-index: 1051;
-  background-repeat: no-repeat;
-  background-position: left; 
+  background-color: rgba(0, 0, 0, 1);
   overflow: scroll;
 
     .fa-times-circle{
@@ -434,7 +433,38 @@ p{
           color: #ff5252;
         }
     }
-
+    .actor-pic{
+      .main-pic{
+        width: 100%;
+        padding: 0 50px 0 50px;
+      }
+      .social-icons{
+        padding-left: 45px;
+      }
+      i{
+        font-size: 3rem;
+        color: white;
+        padding: 15px 5px 25px 5px;
+      }
+      h3{
+        padding-top: 100px;
+        padding-left: 50px;
+      }
+      .gallery-main{
+        padding: 15px 65px 0 65px;
+      }
+      .foto-gall{
+        padding: 1px;
+        filter: brightness(1);
+      }
+      .foto-gall:hover{
+        filter: brightness(.7);
+        cursor: pointer;
+      }
+      .gallery-actor{
+        width: 100%;
+      }
+    }
     .bio{
       color: white;
       max-height: 50px;
