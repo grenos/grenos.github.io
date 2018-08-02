@@ -1,0 +1,15 @@
+{
+  "short_name": "Vasilis Green",
+  "name": "Vasilis Green | FrontEnd Developer",
+  "icons": [
+    {
+      "src": "favicon.gif",
+      "sizes": "32x32",
+      "type": "image/gif"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
