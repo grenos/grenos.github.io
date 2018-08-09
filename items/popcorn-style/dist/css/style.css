@@ -2,13 +2,18 @@ body {
   background-color: black;
   overflow: auto; }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-family: 'Titillium Web', sans-serif; }
 
 p {
   font-family: 'Muli', sans-serif; }
 
-.btn:focus, .btn:active {
+.btn:focus,
+.btn:active {
   outline: none !important;
   -webkit-box-shadow: none;
           box-shadow: none; }
@@ -23,6 +28,17 @@ p {
   .navbar a {
     color: white;
     font-size: 1.1rem; }
+  .navbar .MyNav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0; }
   .navbar #series {
     border-left: 1px solid rgba(255, 255, 255, 0.9); }
   .navbar input {
@@ -74,7 +90,7 @@ p {
   border-radius: 0; }
 
 .grid {
-  margin-top: 56px; }
+  margin-top: 81px; }
 
 .grid-item {
   float: left;
@@ -323,7 +339,7 @@ p {
       max-height: 231px; }
 
 .sm-btn-active {
-  bottom: 40% !important; }
+  bottom: 260px !important; }
 
 .car-cont-active {
   bottom: 0 !important; }
@@ -376,7 +392,7 @@ p {
     font-size: 1rem;
     color: #b9b9b9;
     line-height: 0;
-    padding: 10px 0 40px 0; }
+    padding: 10px 0 20px 0; }
     .actorModal h4 span {
       padding: 0 5px;
       color: #ff5252; }
@@ -470,3 +486,218 @@ p {
   to {
     -webkit-transform: scale(1);
             transform: scale(1); } }
+
+@media (max-width: 320px) {
+  .navbar input[type=text]:focus {
+    width: 12rem; } }
+
+@media (max-width: 374px) {
+  .navbar input[type=text]:focus {
+    width: 12rem; } }
+
+@media (max-width: 575.98px) {
+  .navbar {
+    padding: 10px 0; }
+    .navbar .MyNav {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column; }
+    .navbar #series {
+      border-left: none; }
+    .navbar .form-search {
+      margin-right: 1em; }
+  .grid {
+    margin-top: 104px; }
+  .myModal {
+    overflow: auto;
+    padding-bottom: 30px; }
+    .myModal .fa-times-circle {
+      left: 2%; }
+    .myModal .fa-imdb {
+      left: 3%; }
+    .myModal .fa-amazon {
+      left: 16%; }
+    .myModal .icon-netflix::before {
+      left: 26%; }
+    .myModal .fa-globe {
+      left: 39%; }
+    .myModal h2 {
+      font-size: 1.8rem;
+      line-height: 2.5rem;
+      padding-bottom: 8px;
+      padding-top: 15px; }
+    .myModal .carousel-container {
+      bottom: -35%; }
+  .similar-btn {
+    bottom: -200% !important; }
+  .actorModal .fa-times-circle {
+    top: 2%;
+    left: 2%; }
+  .actorModal .flex-col {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+  .actorModal h2 {
+    font-size: 2.5rem; }
+  .actorModal h4 {
+    padding: 10px 0 20px 0; }
+  .actorModal .actor-pic .foto-gall {
+    padding: 0 0 15px 0; }
+  .actorModal .bio {
+    text-align: left; }
+  .no-movie-found img {
+    width: 60%;
+    height: auto; } }
+
+@media (max-width: 375px) {
+  .myModal .carousel-container {
+    bottom: -40%; } }
+
+@media (max-width: 320px) {
+  .navbar input[type=text]:focus {
+    width: 12rem; }
+  .myModal .carousel-container {
+    bottom: -45%; } }
+
+@media (min-width: 1535.9px) {
+  .myModal .fa-times-circle {
+    font-size: 2rem;
+    top: 2%;
+    left: .8%; }
+  .myModal .fa-imdb {
+    font-size: 3rem;
+    left: 1%;
+    bottom: 3%; }
+  .myModal .fa-amazon {
+    font-size: 3rem;
+    left: 5%;
+    bottom: 3%; }
+  .myModal .icon-netflix::before {
+    font-size: 2.7rem;
+    left: 9%;
+    bottom: 3.3%; }
+  .myModal .fa-globe {
+    font-size: 2.8rem;
+    left: 13%;
+    bottom: 3%; }
+  .myModal .overview {
+    max-height: 300px;
+    overflow: scroll; }
+  .myModal h2 {
+    font-size: 4.6rem;
+    padding-top: 10px;
+    padding-bottom: 20px; }
+  .myModal h4 {
+    font-size: 1.6rem; }
+  .myModal p {
+    font-size: 1.1rem;
+    line-height: 1.9rem;
+    letter-spacing: 2px; }
+    .myModal p span {
+      font-size: 1.6rem; }
+  .myModal ul {
+    padding-top: 20px; }
+    .myModal ul .title {
+      font-size: 1.3rem; }
+    .myModal ul li p span {
+      font-size: 1.3rem; }
+  .myModal .badge-pill {
+    padding: .3rem 1rem .3rem 1rem;
+    font-size: 1rem; }
+  .myModal .genres {
+    padding-top: 10px; }
+  .myModal .trailer-btn {
+    font-size: 1.2rem; }
+  .myModal .video-container {
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    overflow: hidden;
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    padding: 0;
+    -webkit-animation-name: modalopen;
+            animation-name: modalopen;
+    -webkit-animation-duration: .5s;
+            animation-duration: .5s; }
+  .myModal .video {
+    width: 100%;
+    height: 100%;
+    display: block; }
+  .myModal .similar-btn {
+    font-size: 1.2rem; }
+  .no-movie-found img {
+    width: 40%;
+    height: auto; } }
+
+@media (min-width: 1919.9px) {
+  .myModal .fa-times-circle {
+    font-size: 3.5rem; }
+  .myModal .overview {
+    max-height: 300px;
+    overflow: scroll; }
+  .myModal h2 {
+    font-size: 6.2rem;
+    padding-top: 30px;
+    padding-bottom: 2rem; }
+  .myModal h4 {
+    font-size: 2.3rem; }
+  .myModal p {
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+    letter-spacing: 2px; }
+    .myModal p span {
+      font-size: 1.6rem; }
+  .myModal ul {
+    padding-top: 20px; }
+    .myModal ul .title {
+      font-size: 1.5rem; }
+    .myModal ul li p {
+      font-size: 1.5rem; }
+      .myModal ul li p span {
+        font-size: 1.5rem; }
+  .actorModal .fa-times-circle {
+    top: 2%;
+    left: 1%;
+    font-size: 3.5rem; }
+  .actorModal .flex-col {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+  .actorModal h2 {
+    font-size: 4rem;
+    padding: .5rem 0 1.4rem 0; }
+  .actorModal h4 {
+    padding: 10px 0 20px 0;
+    font-size: 1.4rem; }
+  .actorModal .actor-pic .foto-gall {
+    padding: 1px; }
+  .actorModal .actor-pic i {
+    font-size: 5rem; }
+  .actorModal .bio {
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    text-align: justify; }
+  .actorModal h3 {
+    font-size: 3rem; }
+  .actorModal .cr-title {
+    font-size: 1.2rem; }
+  .actorModal .role {
+    font-size: 1.2rem; }
+  .actorModal .badge-year {
+    font-size: 1.2rem; }
+  .no-movie-found img {
+    width: 50%;
+    height: auto; } }
