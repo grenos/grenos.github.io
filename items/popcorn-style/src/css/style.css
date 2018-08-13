@@ -77,7 +77,7 @@ p {
       background-color: transparent;
       -webkit-transition: background-color .5s ease-in-out;
       transition: background-color .5s ease-in-out; }
-    .navbar .dropdown-menu html.nontouch a:hover {
+    .navbar .dropdown-menu a:hover {
       background-color: rgba(255, 255, 255, 0.9); }
 
 .active-link {
@@ -108,7 +108,7 @@ p {
   transition: ease-in-out 0.2s;
   padding: 1px; }
 
-html.nontouch .grid-item:hover img {
+.grid-item:hover img {
   -webkit-transform: scale(1.05);
           transform: scale(1.05); }
 
@@ -125,7 +125,7 @@ html.nontouch .grid-item:hover img {
   -webkit-transition: all 0.2s ease-in-out 0s;
   transition: all 0.2s ease-in-out 0s; }
 
-html.nontouch .grid-item:hover .overlay {
+.grid-item:hover .overlay {
   opacity: 1; }
 
 .gall-text {
@@ -141,7 +141,7 @@ html.nontouch .grid-item:hover .overlay {
   -webkit-transition: all 0.2s ease-in-out 0s;
   transition: all 0.2s ease-in-out 0s; }
 
-html.nontouch .grid-item:hover .gall-text {
+.grid-item:hover .gall-text {
   top: 40%;
   left: 50%;
   opacity: 1; }
@@ -189,7 +189,7 @@ html.nontouch .grid-item:hover .gall-text {
     transition: .1s;
     cursor: pointer;
     z-index: inherit; }
-  .myModal html.nontouch .fa-times-circle:hover {
+  .myModal .fa-times-circle:hover {
     -webkit-transition: .1s;
     transition: .1s;
     color: #ff5252; }
@@ -201,7 +201,7 @@ html.nontouch .grid-item:hover .gall-text {
     bottom: 3%;
     -webkit-transition: .1s;
     transition: .1s; }
-  .myModal html.nontouch .fa-imdb:hover {
+  .myModal .fa-imdb:hover {
     color: #F1BA15;
     -webkit-transition: .1s;
     transition: .1s; }
@@ -213,7 +213,7 @@ html.nontouch .grid-item:hover .gall-text {
     bottom: 3%;
     -webkit-transition: .1s;
     transition: .1s; }
-  .myModal html.nontouch .fa-amazon:hover {
+  .myModal .fa-amazon:hover {
     color: #F7850A;
     -webkit-transition: .1s;
     transition: .1s; }
@@ -225,7 +225,7 @@ html.nontouch .grid-item:hover .gall-text {
     bottom: 3.3%;
     -webkit-transition: .1s;
     transition: .1s; }
-  .myModal html.nontouch .icon-netflix:hover::before {
+  .myModal .icon-netflix:hover::before {
     color: #e50914;
     -webkit-transition: .1s;
     transition: .1s; }
@@ -237,7 +237,7 @@ html.nontouch .grid-item:hover .gall-text {
     bottom: 3%;
     -webkit-transition: .1s;
     transition: .1s; }
-  .myModal html.nontouch .fa-globe:hover {
+  .myModal .fa-globe:hover {
     color: #274046;
     -webkit-transition: .1s;
     transition: .1s; }
@@ -331,7 +331,7 @@ html.nontouch .grid-item:hover .gall-text {
     padding: 10px 40px 5px 5px;
     -webkit-transition: ease-in-out 0.3s;
     transition: ease-in-out 0.3s; }
-    .myModal .carousel-container html.nontouch .slick-item:hover {
+    .myModal .carousel-container .slick-item:hover {
       cursor: pointer;
       -webkit-filter: brightness(0.6);
               filter: brightness(0.6); }
@@ -377,7 +377,7 @@ html.nontouch .grid-item:hover .gall-text {
     transition: .1s;
     cursor: pointer;
     z-index: inherit; }
-  .actorModal html.nontouch .fa-times-circle:hover {
+  .actorModal .fa-times-circle:hover {
     -webkit-transition: .1s;
     transition: .1s;
     color: #ff5252; }
@@ -414,7 +414,7 @@ html.nontouch .grid-item:hover .gall-text {
     padding: 1px;
     -webkit-filter: brightness(1);
             filter: brightness(1); }
-  .actorModal .actor-pic html.nontouch .foto-gall:hover {
+  .actorModal .actor-pic .foto-gall:hover {
     -webkit-filter: brightness(0.7);
             filter: brightness(0.7);
     cursor: pointer; }
@@ -439,7 +439,7 @@ html.nontouch .grid-item:hover .gall-text {
     padding-bottom: 50px;
     font-family: 'Titillium Web', sans-serif;
     font-weight: 100; }
-  .actorModal html.nontouch .expand-btn:hover {
+  .actorModal .expand-btn:hover {
     color: #ff5252;
     cursor: pointer; }
   .actorModal .list-group {

@@ -78,7 +78,7 @@ p {
       background-color: transparent;
       transition: background-color .5s ease-in-out;
     }
-    html.nontouch a:hover {
+    a:hover {
       background-color: rgba(255, 255, 255, .9);
     }
   }
@@ -119,7 +119,7 @@ p {
   padding: 1px;
 }
 
-html.nontouch .grid-item:hover img {
+.grid-item:hover img {
   transform: scale(1.05);
 }
 
@@ -136,7 +136,7 @@ html.nontouch .grid-item:hover img {
   transition: all 0.2s ease-in-out 0s;
 }
 
-html.nontouch .grid-item:hover .overlay {
+.grid-item:hover .overlay {
   opacity: 1;
 }
 
@@ -152,7 +152,7 @@ html.nontouch .grid-item:hover .overlay {
   transition: all 0.2s ease-in-out 0s;
 }
 
-html.nontouch .grid-item:hover .gall-text {
+.grid-item:hover .gall-text {
   top: 40%;
   left: 50%;
   opacity: 1;
@@ -204,7 +204,7 @@ html.nontouch .grid-item:hover .gall-text {
     cursor: pointer;
     z-index: inherit;
   }
-  html.nontouch .fa-times-circle:hover {
+  .fa-times-circle:hover {
     transition: .1s;
     color: #ff5252;
   }
@@ -216,7 +216,7 @@ html.nontouch .grid-item:hover .gall-text {
     bottom: 3%;
     transition: .1s;
   }
-  html.nontouch .fa-imdb:hover {
+  .fa-imdb:hover {
     color: #F1BA15;
     transition: .1s;
   }
@@ -228,7 +228,7 @@ html.nontouch .grid-item:hover .gall-text {
     bottom: 3%;
     transition: .1s;
   }
-  html.nontouch .fa-amazon:hover {
+  .fa-amazon:hover {
     color: #F7850A;
     transition: .1s;
   }
@@ -240,7 +240,7 @@ html.nontouch .grid-item:hover .gall-text {
     bottom: 3.3%;
     transition: .1s;
   }
-  html.nontouch .icon-netflix:hover::before {
+  .icon-netflix:hover::before {
     color: #e50914;
     transition: .1s;
   }
@@ -252,7 +252,7 @@ html.nontouch .grid-item:hover .gall-text {
     bottom: 3%;
     transition: .1s;
   }
-  html.nontouch .fa-globe:hover {
+  .fa-globe:hover {
     color: #274046;
     transition: .1s;
   }
@@ -359,7 +359,7 @@ html.nontouch .grid-item:hover .gall-text {
     background-color: rgba(0, 0, 0, .9);
     padding: 10px 40px 5px 5px;
     transition: ease-in-out 0.3s;
-    html.nontouch .slick-item:hover {
+    .slick-item:hover {
       cursor: pointer;
       filter: brightness(.6);
     }
@@ -411,7 +411,7 @@ html.nontouch .grid-item:hover .gall-text {
     cursor: pointer;
     z-index: inherit;
   }
-  html.nontouch .fa-times-circle:hover {
+  .fa-times-circle:hover {
     transition: .1s;
     color: #ff5252;
   }
@@ -457,7 +457,7 @@ html.nontouch .grid-item:hover .gall-text {
       padding: 1px;
       filter: brightness(1);
     }
-    html.nontouch .foto-gall:hover {
+    .foto-gall:hover {
       filter: brightness(.7);
       cursor: pointer;
     }
@@ -487,7 +487,7 @@ html.nontouch .grid-item:hover .gall-text {
     font-family: 'Titillium Web', sans-serif;
     font-weight: 100;
   }
-  html.nontouch .expand-btn:hover {
+  .expand-btn:hover {
     color: #ff5252;
     cursor: pointer;
   }
