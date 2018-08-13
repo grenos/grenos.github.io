@@ -19,6 +19,16 @@ function fixupMouse(event) {
   return e;
 }
 
+//! disable hover on touch
+const touchSupport =
+  'ontouchstart' in window ||
+  navigator.maxTouchPoints > 0 ||
+  navigator.msMaxTouchPoints > 0;
+if (!touchSupport) {
+  // browser doesn't support touch
+  document.documentElement.className += ' non-touch';
+}
+
 //! OBJECT INITIALIZERS
 // init movie object from class
 const movie = new Movie();
