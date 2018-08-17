@@ -23,7 +23,6 @@ p {
 
 .navbar {
   background-color: rgba(0, 0, 0, 0.8);
-  padding: 20px 0;
   font-family: 'Titillium Web', sans-serif; }
   .navbar a {
     color: white;
@@ -68,7 +67,8 @@ p {
     border-color: white;
     background-color: transparent;
     color: white;
-    border: 0; }
+    border: 0;
+    margin-left: 12px; }
   .navbar .dropdown-menu {
     background-color: rgba(0, 0, 0, 0.8); }
     .navbar .dropdown-menu a {
@@ -79,6 +79,8 @@ p {
       transition: background-color .5s ease-in-out; }
     .navbar .dropdown-menu a:hover {
       background-color: rgba(255, 255, 255, 0.9); }
+  .navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); }
 
 .active-link {
   color: #ff5252 !important; }
@@ -90,7 +92,7 @@ p {
   border-radius: 0; }
 
 .grid {
-  margin-top: 81px; }
+  margin-top: 57px; }
 
 .grid-item {
   float: left;
@@ -503,12 +505,16 @@ p {
       -webkit-box-direction: normal;
           -ms-flex-direction: column;
               flex-direction: column; }
+    .navbar li {
+      margin-top: 1em; }
     .navbar #series {
       border-left: none; }
     .navbar .form-search {
-      margin-right: 1em; }
+      margin: 1em 0; }
+    .navbar .dropdown {
+      display: none; }
   .grid {
-    margin-top: 104px; }
+    margin-top: 57px; }
   .myModal {
     overflow: auto;
     padding-bottom: 30px; }
